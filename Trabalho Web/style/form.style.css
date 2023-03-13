@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #0d9b00;
+    height: 5rem;
+    border-radius: 15px;
+    border-bottom: 2px solid #f14000;
+}
