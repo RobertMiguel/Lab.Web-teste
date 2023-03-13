@@ -1,5 +1,5 @@
 <?php
-include('protect.php')
+include('./protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,9 @@ include('protect.php')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EEEP Manoel Mano | Painel</title>
     <!-- Estilização da página -->
-    <link rel="stylesheet" href="painel.css">
+    <link rel="stylesheet" href="style/painel.css">
+    <!-- Favicon EEEP Manoel Mano -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/eeepManoelMano.png">
 </head>
 <body>
     <div class="header">
@@ -17,8 +19,8 @@ include('protect.php')
             <div class="container">
                 <div class="row">
                     <div class="col-0">
-                        <a href="https://www.ceara.gov.br/"><img src="logo-governo.svg" alt="Logo do Governo do Ceará"></a>
-                        <a href="https://www.instagram.com/eeepmanoelmano/"><img src="logo-mm.svg" alt="Logo da EEEP Manoel Mano"></a>
+                        <a href="https://www.ceara.gov.br/"><img src="./assets/logo-governo.svg" alt="Logo do Governo do Ceará"></a>
+                        <a href="https://www.instagram.com/eeepmanoelmano/"><img src="./assets/logo-mm.svg" alt="Logo da EEEP Manoel Mano"></a>
                     </div>
                     <div class="col-0">
                         <h3>Painel</h3>
@@ -35,7 +37,7 @@ include('protect.php')
             </button>
     </div>
     <footer>
-            <img src="./ondas-governo-rodape.png" alt="Ondas rodape do governo">
+            <img src="assets/ondas-governo-rodape.png" alt="Ondas rodape do governo">
     </footer>
 </body>
 </html>
