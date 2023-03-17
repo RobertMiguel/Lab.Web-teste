@@ -2,6 +2,7 @@
 include('conexao.php');
 
 if(isset($_POST['usuario']) || isset($_POST['senha'])) {
+    
     if(strlen($_POST['usuario']) == 0) {
         echo "Preencha o campo usuário";
     }
