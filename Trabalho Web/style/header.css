@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-main-menu {
+    border-bottom: 5px solid #00bd19;
+    box-shadow: 0px 5px 25px 0px rgb( 0 0 0 / 50%);
+    overflow: visible !important;
+    background: url(../assets/base-ondas.svg) no-repeat -50px bottom !important;
+    height: 100px;
+    background-size: 700px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.col-0 h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #00A84A;
+}
+
+.col-0 img {
+    width: 180px;
+    height: 75px;
+}

@@ -1,0 +1,33 @@
+:root {
+    --bg-color-header: #31a252;
+    --text-color: #242424;
+    --border-color: #f8ed4f;
+}
+
+#form-header h2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    border-radius: 15px;
+    background-color: var(--bg-color-header);
+    border-bottom: 3px solid #faff00;
+    color: #fff;
+}
+
+#order-form-container select {  
+    padding: 1rem .75rem;
+}
+
+#order-form-container input:disabled,
+#order-form-container select:disabled {
+    
+} 
+
+#order-form-container input:focus {
+    border: 1px solid var(--border-color);
+}
+
+#order-form-container label {
+    left: 1em;
+}

@@ -1,0 +1,68 @@
+:root {
+    --bg-color: #fff;
+    --secondary-bg-color: #a9a9a9;
+    --primary-color: #000;
+    --secondary-color: #feff00;
+    --text-color: #242424;
+    --border-color: #242424;
+    --bg-color-secondary: #1EA412;
+}
+
+#checkout-page {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+#form-header h2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    border-radius: 15px;
+    background-color: var(--bg-color-secondary);
+    border-bottom: 3px solid #faff00;
+    color: #fff;
+}
+
+.hide {
+    display: none !important;
+}
+
+#order-form-container {
+    padding: 1.5em;
+    max-width: 700px;
+}
+
+#order-form-container input,
+#order-form-container select {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+}
+
+#order-form-container select {  
+    padding: 1rem .75rem;
+}
+
+#order-form-container label {
+    color: var(--text-color);
+    left: 1em;
+}
+
+#order-form-container input:disabled,
+#order-form-container select:disabled {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color)
+} 
+
+#order-form-container input:focus {
+    border-color: var(--secondary-color);
+}
+
+#save-btn {
+    background-color: #25cc88;
+    border: none;
+    height: 3em;
+    width: 8em;
+    border-radius: 1.5rem;
+}
