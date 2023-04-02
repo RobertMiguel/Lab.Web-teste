@@ -160,6 +160,7 @@ include('processa.php');
           <div class="col-12 col-sm-6 mb-3">
             <select
               class="form-select shadow-none"
+              name="region"
               id="region"
               disabled
               required
@@ -390,7 +391,6 @@ include('processa.php');
                 name="nomeTransp"
                 placeholder="Nome do Responsável"
                 required
-                disabled
                 />
                 <label for="nomeTransp">Nome do Responsável</label>
             </div>
@@ -410,6 +410,7 @@ include('processa.php');
           </div>
             <div class="col-12 col-sm-6 mb-3 mb-md-0 form-floating">
               <p>Número do NISS</p>
+              <!-- <p>Número do NISS</p>
                 <select 
                 name="numNiss" 
                 id="numNiss" 
@@ -418,7 +419,19 @@ include('processa.php');
                   <option selected>Selecione</option>
                   <option value="nissSim">Possui</option>
                   <option value="nissNao">Não Possui</option>
-                </select>
+                </select> -->
+                <div class="form-floating">
+                  <input 
+                  type="text"
+                  class="form-control shadow-none"
+                  id="niss"
+                  name="niss"
+                  placeholder="Número do NISS"
+                  required
+                  />
+                  <label for="niss">Número do NISS</label>
+              </div>
+
             </div>
         </div>
           <div class="row mb-3">
@@ -433,6 +446,11 @@ include('processa.php');
                 required
                 />
                 <label for="avaliExternas">Documentos de identidade</label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12 col-sm-6 mb-3 mb-md-0 text-center mx-auto"">
+                <button name="cadastrar" class="btn btn-success">Enviar</button>
             </div>
           </div>
         </div>
