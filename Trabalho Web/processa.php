@@ -5,6 +5,7 @@ include('conexao.php');
 if (isset($_POST['cadastrar'])) {
 
     // Dados Gerenciais do Banco
+    
     $id = $_POST['id'];
     $usuario = $_POST['usuario'];
     $senha =($_POST['senha']);
@@ -16,6 +17,7 @@ if (isset($_POST['cadastrar'])) {
     $city = $_POST['city'];
     $number = $_POST['number'];
     $region = $_POST['region'];
+    
     // $naturalidade = ($_POST['naturalness']);
     $nationality = $_POST['nationality'];
     $naturalness = $_POST['naturalness'];
@@ -29,6 +31,7 @@ if (isset($_POST['cadastrar'])) {
     $filiMae = $_POST['filiMae'];
     $profMae = $_POST['profMae'];
     $cpfMae = ($_POST['cpfMae']);
+    
     // Dados Complementares
     $transpEscolar = $_POST['transpEscolar'];
     $nomeTransp = $_POST['nomeTransp'];
