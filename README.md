@@ -24,12 +24,22 @@ Para inspiração do projeto, primeiro desenvolvemos um protótipo no figma, com
 ### **1.1**
 Tela de Login : O usuário obrigatoriamente precisa ter um ID, nome e senha. Caso o cliente que esteja querendo entrar no sistema, precisa ter nomes e senhas iguais ao do banco de dados, caso contrário, dará erro. Assim, tem outra suposição, se o usuária querer entrar nas páginas sem efeituar o login, posteriormente ocorrerá um erro para o usuário efeituar o login, ou seja, essas páginas tem segurança(um mini protect)
 ### **1.2**
-Formulário Socieconômico : O formulário por completo está divido em 7 etapas, são elas : Ficha de matrícula, um pequeno form com informações sobre sua matrícula, como, nome, CPF, data de nascimento. Segunda, Dados Adicionais : que são informações pessoais do aluno, por exemplo, nacionalidae, naturalidade, raça, sexo e entre outros. Terceiro, Dados Complementares : são infomações para completar os dados requeridos do aluno, como o meio de transporte escolar que ele usa, caso o aluno receba bolsa familía, tipos de deficiência. Quarto, Detalhamento da matrícula : são informações do inicio e final da ensimo médio do aluno, são os campos : Ano Letivo, Série/Turma, Data de Matrícula. Quinto, Progressão parcial : 
+Formulário Socieconômico : O formulário por completo está divido em 7 etapas, são elas : Ficha de matrícula, um pequeno form com informações sobre sua matrícula, como, nome, CPF, data de nascimento. Segunda, Dados Adicionais : que são informações pessoais do aluno, por exemplo, nacionalidae, naturalidade, raça, sexo e entre outros. Terceiro, Dados Complementares : são infomações para completar os dados requeridos do aluno, como o meio de transporte escolar que ele usa, caso o aluno receba bolsa familía, tipos de deficiência. Quarto, Detalhamento da matrícula : são informações do inicio e final da ensimo médio do aluno, são os campos : Ano Letivo, Série/Turma, Data de Matrícula. Quinto, Progressão parcial : São os progressos do aluno no inicio e final do ensimo médio, são os campos : Ano Letivo, Escola, Série, Disciplina, Resultado. Sexto, Questionário socioeconômico do aluno : que são, dados referentes aos pais ou responsáveis, caso o aluno tenha outro responsável é disponibilizado um formulário para o preencimento dos campos, depois dados referente a família e por dados referente conclusão do formulário. Quanto terminado tudo isso é preenchido uma ficha de saúde do aluno
 ### **1.3**
-Por último, tem a página "Visão Geral" que é exibido em uma tag html chamada canvas, usando uma biblioteca javascript chamada "chartjs", (infelizmente não foi conseguido colocar a api dentro do gráfico), então o gráfico é "manual", mas foi melhor para ganhar experiência. Voltando, o gráfico é exibido na sua barra lateral valores da cotação, e na barra embaixo do gráfico é exibido os dias que foram inseridos no gráfico. Assim, o gráfico faz uma comparação com os dias e os valores e gera o gráfico.
-## 【🛢️】**Componentes :**
-### **1.1**
-O primeiro componente é sidebar, que foi desenvolvido para facilitar a navegação do usuário, com os botões das páginas citadas acima.
-### **1.2**
-O segundo é navbar com as cotaçẽos das páginas "Dólar Americano", "Euro" e "Real".
+Relátório com Gráficos : (AINDA FALTA)
 
+<h1 align="center">Projeto Real</h1>
+
+https://user-images.githubusercontent.com/90520597/206917695-310a389a-da5d-4f5c-a1f3-950698f83f88.mp4
+
+<h1 align="center">【🪙】Funcionamento do Conversor </h1>
+
+https://user-images.githubusercontent.com/90520597/207487823-705f6ece-fe0d-46e5-9d87-eabea211cbef.mp4
+
+<h1 align="center">【📈】Funcionamento da Cotação </h1>
+
+https://user-images.githubusercontent.com/90520597/207487924-dc90f21f-903d-42f7-a42f-a70f25772908.mp4
+
+<h1 align="center">【📊】Funcionamento da Visão Geral </h1>
+
+https://user-images.githubusercontent.com/90520597/207488020-662b5faf-e886-4392-9955-8bc5a77f96f9.mp4
