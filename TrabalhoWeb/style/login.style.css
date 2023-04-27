@@ -2,15 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    display: flex;
 }
 
 .container-main-menu {
     border-bottom: 5px solid #00bd19;
     box-shadow: 0px 5px 25px 0px rgb( 0 0 0 / 50%);
     overflow: visible !important;
-    background: url(../assets/base-ondas.svg) no-repeat -50px bottom !important;
+    background: url(../img/base-ondas.svg) no-repeat -50px bottom !important;
     height: 100px;
     background-size: 700px;
+    display: flex;
 }
 
 .row {
@@ -30,6 +32,10 @@
     align-items: center;
     text-align: center;
     text-transform: uppercase;
+    color: #00A84A;
+}
+
+.col-3 h3 {
     color: #00A84A;
 }
 
@@ -67,33 +73,37 @@
     outline: none;
     border-radius: 15px;
     /*Relação as bordas*/
-    border-bottom: 2px solid gray;
-    color: #CBD0F7;
+    border-bottom: 2px solid rgb(16, 15, 15);
+    color: #1d1d1f;
     padding-left: 10px;
+    display: flex;
 }
 
 input::placeholder {
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 12px;
     line-height: 18px;
     color: rgba(42, 42, 42, 0.5);
+    display: flex;
 }
 
 img {
     width: 30px;
     height: 30px;
+    display: flex;
 }
 
 form [type="submit"] {
     background: #00853B;
     border-radius: 10px;
     border: none;
-    color: #fff;
+    color: #3b3939;
     width: 50%;
     height: 40px;
     font-size: 15px;
+    display: flex;
 }
 
 label {
@@ -104,6 +114,7 @@ label {
     line-height: 24px;
     color: #000000;
     padding-top: 10px;
+    display: flex;
 }
 
 .submit {
@@ -112,13 +123,18 @@ label {
     display: flex;
 }
 
-footer img{
+footer img {
     position: fixed;
     left: 0;
     bottom: 0;
     overflow: visible !important;
-    height: 100px;
+    height: 200px;
     display: flex;
     justify-content: center;
     width: 100%;
+    display: flex;
+}
+
+#nu {
+    color: #000000;
 }
