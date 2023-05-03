@@ -325,6 +325,51 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
+
+        <!-- Renda mensal -->
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Rensa Mensal', 'Quantidade de famílias' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY rendaMensalFamiliar; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['rendaMensalFamiliar'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Renda mensal por cada casa',
+            subtitle: 'Renda mensal de cada família do aluno',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material08'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
   </head>
   <body>
   <header>
@@ -437,6 +482,19 @@
             <br>
             <div class="charts">
               <div id="columnchart_material07" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Renda Mensal</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material08" style="height: 500px;"></div>
             </div>
     </section>
     </div>
