@@ -318,7 +318,7 @@
         var options = {
           chart: {
             title: 'Quantidade por cada casa',
-            subtitle: 'Total de pessoas que residem com o aluno',
+            subtitle: 'Quantidade de pessoas que residem com o aluno',
           }
         };
         var chart = new google.charts.Bar(document.getElementById('columnchart_material07'));
