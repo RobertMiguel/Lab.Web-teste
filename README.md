@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-![bannerSocieconomico](https://user-images.githubusercontent.com/90520597/235884838-421d326c-209e-4fa2-a674-c83c7d788e8a.png)
-
-=======
 <img src="./TrabalhoWeb/img/bannerSocieconomico.png" style='border-radius: 10px;'></img>
->>>>>>> f309a6f (README.md border)
+
 <h1 align="center">Formulário Socieconômico</h1>
 <h1>Introdução</h1>
 Contexto - Sistema Web para coleta de dados de saúde, sociais e econômicos das famílias dos alunos da EEEP Manoel Mano, o sistema terá com base um formulário utilizado no ato da matrícula e pós recursos do processo seletivo. Lista de Tarefas a serem feitas - Disponibilizar relatórios gerais sobre o perfil de quem entrou, relatórios gerais por curso (informática, comércio, enfermagem e administração) e relatórios específicos por turma, assim como nome dos alunos e quais suas comorbidades.
