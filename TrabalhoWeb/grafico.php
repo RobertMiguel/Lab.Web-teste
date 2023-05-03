@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="style/dados.css">
     <title>EEEP Manoel Mano | Relatório Sociecômico</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Quantidade de Alunos, cada curso -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
@@ -17,7 +19,7 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-            ['Cursos', 'Total de alunos', 'Porcentagem'],
+            ['Cursos', 'Quantidade de Alunos', 'Porcentagem'],
             <?php
               include "conexao.php";
 
@@ -45,7 +47,7 @@
         ]);
         var options = {
           chart: {
-            title: 'Total por Curso',
+            title: 'Quantidade por Curso',
             subtitle: 'Porcentagem de cada curso na escola',
           }
         };
@@ -53,56 +55,274 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
+
+    <!-- Porcetagem de mães empregadas, cada aluno -->
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Mãe está empregada?');
-        data.addColumn('number', 'Quantidade de alunos');
-        data.addRows([
-          <?php
-            include "conexao.php";
 
-            if($mysqli->connect_errno) {
-              die("Erro ao conectar com o banco de dados" . $mysqli->connect_error);
-            }
+        var data = google.visualization.arrayToDataTable([
+            ['Mães Empregadas', 'Quantidade de Mães', 'Porcentagem'],
+            <?php
+              include "conexao.php";
 
-            $sql = "SELECT COUNT(CASE WHEN empregadoMae = 'Sim' THEN 1 END) AS sim, COUNT(CASE WHEN empregadoMae = 'Não' THEN 1 END) AS nao FROM form3 WHERE empregadoMae IN ('Sim', 'Não'); ";
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
 
-            $my_query = mysqli_query($mysqli, $sql);
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregadoMae; ";
+              $result = mysqli_query($mysqli, $sql);
 
-            if(!$my_query) {
-              die("Erro ao executar a consulta: " . $mysqli->error);
-            }+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
 
-            $result = mysqli_fetch_assoc($my_query);
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['empregadoMae'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
 
-            $mae_empregada_sim = $result['sim'];
-            $mae_empregada_nao = $result['nao'];
-
-            $mysqli->close();
-          ?>
-          ['Sim', <?php echo $mae_empregada_sim; ?>],
-          ['Não', <?php echo $mae_empregada_nao; ?>]
+              $mysqli->close();
+            ?>
         ]);
-
         var options = {
-          title: 'Mãe está empregada?',
-          subtitle: 'Porcentagem de alunos com mães empregadas ou não',
-          chartArea: { width: '50%' },
-          hAxis: {
-            title: 'Quantidade de alunos',
-            minValue: 0
-          },
-          vAxis: {
-            title: 'Mãe está empregada?'
+          chart: {
+            title: 'Quantidade de Mães Empregadas',
+            subtitle: 'Porcentagem de cada mãe do aluno',
           }
         };
-
         var chart = new google.charts.Bar(document.getElementById('columnchart_material02'));
-        chart.draw(data, options);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+        <!-- Porcetagem de pais empregadas, cada aluno -->
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Pais Empregadas', 'Quantidade de Pais', 'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregado; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['empregado'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Quantidade de Pais Empregadas',
+            subtitle: 'Porcentagem de cada pai do aluno',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material03'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <!-- Porcetagem da escolaridade dos pais, cada aluno -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Escolaridade', 'Quantidade de Pais' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escolaridadePai; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escolaridadePai'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Quantidade por Escolaridade',
+            subtitle: 'Escolaridade de cada pai, em toda a escola',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material04'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <!-- Porcetagem da escolaridade da mãe, cada aluno -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Escolaridade', 'Quantidade de escolaridade' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escola2'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Quantidade por Escolaridade',
+            subtitle: 'Escolaridade de cada mãe, em toda a escola',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material05'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <!-- Pessoas que residem com o aluno -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Reside com o Aluno', 'Quantidade de pessoas' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoMora; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['alunoMora'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Total por cada aluno',
+            subtitle: 'Total de pessoas que residem com o aluno',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material06'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <!-- Tipo de moradia -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Reside com o Aluno', 'Quantidade de pessoas' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY moradia; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['moradia'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Total por cada aluno',
+            subtitle: 'Total de pessoas que residem com o aluno',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material07'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
   </head>
@@ -145,13 +365,78 @@
             <span id="t"></span>
             <br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Visão geral dos alunos do 1ª Ano 2023  </h1>
+            <h1 id="cnt">Mães Empregadas  </h1>
             <br>
             <br>
             <br>
             <br>
             <div class="charts">
               <div id="columnchart_material02" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Pais Empregados</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material03" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Escolaridade do Pai</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material04" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Escolaridade da Mãe</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material05" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Pessoas que Residem com o Aluno</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material06" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Tipo de Moradia</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material07" style="height: 500px;"></div>
             </div>
     </section>
     </div>
