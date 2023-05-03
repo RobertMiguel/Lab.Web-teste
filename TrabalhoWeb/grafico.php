@@ -370,6 +370,51 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
+
+      <!-- Aonde o aluno concluiu o ensino fundamental -->
+      <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Tipos de Escola', 'Quantidade de Alunos' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoEnsinoFundamental; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['alunoEnsinoFundamental'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+          chart: {
+            title: 'Quantidade por cada aluno',
+            subtitle: 'Termino do ensino fundamental',
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material09'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
   </head>
   <body>
   <header>
@@ -495,6 +540,19 @@
             <br>
             <div class="charts">
               <div id="columnchart_material08" style="height: 500px;"></div>
+            </div>
+    </section>
+    <section class="bcgb">
+            <span id="t"></span>
+            <br>
+            <p id="cnt2"></p>
+            <h1 id="cnt">Aonde o Aluno Concluiu o Ensino Fundamental</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="charts">
+              <div id="columnchart_material09" style="height: 500px;"></div>
             </div>
     </section>
     </div>
