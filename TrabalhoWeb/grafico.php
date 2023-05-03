@@ -272,8 +272,8 @@
         ]);
         var options = {
           chart: {
-            title: 'Total por cada aluno',
-            subtitle: 'Total de pessoas que residem com o aluno',
+            title: 'Quantidade por cada aluno',
+            subtitle: 'Quantidade de pessoas que residem com o aluno',
           }
         };
         var chart = new google.charts.Bar(document.getElementById('columnchart_material06'));
@@ -317,7 +317,7 @@
         ]);
         var options = {
           chart: {
-            title: 'Total por cada aluno',
+            title: 'Quantidade por cada casa',
             subtitle: 'Total de pessoas que residem com o aluno',
           }
         };
