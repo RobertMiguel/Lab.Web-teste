@@ -1,0 +1,17 @@
+{
+    "name": "robert/trabalho-web",
+    "autoload": {
+        "psr-4": {
+            "Robert\\TrabalhoWeb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RobertMiguel",
+            "email": "robertresende9@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^0.6.2"
+    }
+}
