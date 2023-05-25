@@ -1,8 +1,8 @@
 {
-    "name": "robert/trabalho-web",
+    "name": "robert/pdfphp",
     "autoload": {
         "psr-4": {
-            "Robert\\TrabalhoWeb\\": "src/"
+            "Robert\\Pdfphp\\": "src/"
         }
     },
     "authors": [
@@ -11,7 +11,5 @@
             "email": "robertresende9@gmail.com"
         }
     ],
-    "require": {
-        "dompdf/dompdf": "^0.6.2"
-    }
+    "require": {}
 }
