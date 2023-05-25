@@ -143,7 +143,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Pessoas que Residem com o Aluno
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+$sql_code = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoMora; ";
 $result = mysqli_query($mysqli, $sql);
 
 // Título
