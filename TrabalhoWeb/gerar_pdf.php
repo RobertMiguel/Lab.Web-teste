@@ -148,16 +148,82 @@ $result = mysqli_query($mysqli, $sql);
 
 // Título
 $pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(0, 10, 'Escolaridade das Mães', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Pessoas que Residem com o Aluno', 0, 1, 'C');
 
 // Cabeçalho da tabela
-$pdf->Cell(50, 10, 'Escolaridade', 1, 0, 'C', 1);
-$pdf->Cell(70, 10, 'Quant. de Mães', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Resid. com Aluno', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Pessoas', 1, 0, 'C', 1);
 $pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
 
 // Preencher a tabela com os dados
 while ($row = $result->fetch_assoc()) {
-    $pdf->Cell(50, 10, $row['escola2'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['alunoMora'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
+
+// Tabela Tipos de Moradia
+
+// Consulta SQL para obter os dados
+$sql_code = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY moradia; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Tipos de Moradia', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Moradia', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Pessoas', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['moradia'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
+
+// Tabela Renda Mensal
+
+// Consulta SQL para obter os dados
+$sql_code = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY rendaMensalFamiliar; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Renda Mensal', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Renda Mensal', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Famílias', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['rendaMensalFamiliar'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
+
+// Tabela Aonde o aluno concluiu o ensino fundamental
+
+// Consulta SQL para obter os dados
+$sql_code = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY rendaMensalFamiliar; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Renda Mensal', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Renda Mensal', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Famílias', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['rendaMensalFamiliar'], 1, 0, 'C');
     $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
     $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
 }
