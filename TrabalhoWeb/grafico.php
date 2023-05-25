@@ -555,6 +555,16 @@
               <div id="columnchart_material09" style="height: 500px;"></div>
             </div>
     </section>
+    <br><br><br><br>
+                <div class="row mb-1">
+                    <div class="col-sm-8"></div>
+                    <div class="d-grid gap-2 col-4 mx-auto" download="relatorio.pdf">
+                        <a href="gerar_pdf.php">
+                          <button type="submit" class="btn btn-outline-success" name="relatorio">Baixar Relatórios</button>
+                        </a>
+                    </div>
+                </div>
+                <br>
     </div>
   </body>
 </html>
