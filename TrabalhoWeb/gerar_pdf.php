@@ -4,6 +4,8 @@ require_once('tcpdf/tcpdf.php');
 
 require("conexao.php");
 
+// Tabela Visão geral dos alunos do 1ª Ano 2023
+
 // Consulta SQL para obter os dados
 $sql_code = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM form3)) * 100, 2), '%') AS porcentagem_alunos FROM form3 WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
 $result = mysqli_query($mysqli, $sql_code);
@@ -50,6 +52,8 @@ while ($row = $result->fetch_assoc()) {
     $pdf->Cell(50, 10, $row['porcentagem_alunos'], 1, 1, 'C');
 }
 
+// Tabela Mães Empregadas
+
 // Consulta SQL para obter os dados
 $sql_code = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregadoMae; ";
 $result = mysqli_query($mysqli, $sql);
@@ -59,8 +63,8 @@ $pdf->SetFont('helvetica', 'B', 10);
 $pdf->Cell(0, 10, 'Mães Empregadas', 0, 1, 'C');
 
 // Cabeçalho da tabela
-$pdf->Cell(50, 10, 'Curso', 1, 0, 'C', 1);
-$pdf->Cell(70, 10, 'Quant. Alunos', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Mães Empregadas', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Maes', 1, 0, 'C', 1);
 $pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
 
 // Preencher a tabela com os dados
@@ -70,8 +74,10 @@ while ($row = $result->fetch_assoc()) {
     $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
 }
 
+// Tabela Pais Empregados
+
 // Consulta SQL para obter os dados
-$sql_code = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregadoMae; ";
+$sql_code = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregado; ";
 $result = mysqli_query($mysqli, $sql);
 
 // Título
@@ -79,18 +85,82 @@ $pdf->SetFont('helvetica', 'B', 10);
 $pdf->Cell(0, 10, 'Pais Empregados', 0, 1, 'C');
 
 // Cabeçalho da tabela
-$pdf->Cell(50, 10, 'Curso', 1, 0, 'C', 1);
-$pdf->Cell(70, 10, 'Quant. Alunos', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Pais Empregados', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Pais', 1, 0, 'C', 1);
 $pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
 
 // Preencher a tabela com os dados
 while ($row = $result->fetch_assoc()) {
-    $pdf->Cell(50, 10, $row['empregadoMae'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['emepregado'], 1, 0, 'C');
     $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
     $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
 }
 
+// Tabela Escolaridade do Pai
 
+// Consulta SQL para obter os dados
+$sql_code = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escolaridadePai; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Escolaridade dos Pais', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Escolaridade', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Pais', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['escolaridadePai'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
+
+// Tabela Escolaridade da Mãe
+
+// Consulta SQL para obter os dados
+$sql_code = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Escolaridade das Mães', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Escolaridade', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Mães', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['escola2'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
+
+// Tabela Pessoas que Residem com o Aluno
+
+// Consulta SQL para obter os dados
+$sql_code = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+$result = mysqli_query($mysqli, $sql);
+
+// Título
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(0, 10, 'Escolaridade das Mães', 0, 1, 'C');
+
+// Cabeçalho da tabela
+$pdf->Cell(50, 10, 'Escolaridade', 1, 0, 'C', 1);
+$pdf->Cell(70, 10, 'Quant. de Mães', 1, 0, 'C', 1);
+$pdf->Cell(50, 10, 'Porcentagem', 1, 1, 'C', 1);
+
+// Preencher a tabela com os dados
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(50, 10, $row['escola2'], 1, 0, 'C');
+    $pdf->Cell(70, 10, $row['quantidade'], 1, 0, 'C');
+    $pdf->Cell(50, 10, $row['porcentagem'], 1, 1, 'C');
+}
 
 $pdf->Output('relatorio.pdf', 'D');
 
