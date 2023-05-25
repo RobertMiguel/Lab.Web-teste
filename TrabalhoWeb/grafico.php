@@ -317,7 +317,7 @@
         ]);
         var options = {
           chart: {
-            title: 'Quantidade por cada casa',
+            title: 'Quantidade por Cada Casa',
             subtitle: 'Quantidade de pessoas que residem com o aluno',
           }
         };
