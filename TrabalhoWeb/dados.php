@@ -1,5 +1,5 @@
 <?php
-include('./protect.php')
+include('protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,9 @@ include('./protect.php')
             <span id="t"></span>
             <br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Ficha de matrícula</h1>
+            <div class="row"><p id="cnt2"></p>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Ficha de Matrícula</h1></div>
             <br>
             <br>
             <br>
@@ -81,7 +83,8 @@ include('./protect.php')
             </div>
             <br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Dados Adicionais</h1>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Dados Adicionais</h1></div>
             <br>
             <br>
             <br>
@@ -162,7 +165,8 @@ include('./protect.php')
             </div>
             <br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Dados Complementares</h1>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Dados Complementares</h1></div>
             <br>
             <br>
             <br>
@@ -206,7 +210,8 @@ include('./protect.php')
             </div>
             <br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Detalhamento da matrícula</h1>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Detalhamento da Matrícula</h1></div>
             <br>
             <br><br><br><br>
             <div class="row mb-1">
@@ -243,7 +248,8 @@ include('./protect.php')
             </div>
             <br><br><br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Progressão parcial</h1>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Progressa Parcial</h1></div>
             <br><br><br><br>
             <div class="row mb-1">
             <table class="table">
@@ -296,7 +302,8 @@ include('./protect.php')
             </div>
             <br><br><br>
             <p id="cnt2"></p>
-            <h1 id="cnt">Questionário socioeconômico do aluno</h1>
+            <div class="row"><p id="cnt2"></p>
+            <h1 id="cnt">Questionário Socioeconômico do Aluno</h1></div>
             <br>
             <br>
             <br>

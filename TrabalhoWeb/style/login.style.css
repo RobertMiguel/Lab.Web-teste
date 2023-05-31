@@ -11,7 +11,7 @@
     overflow: visible !important;
     background: url(../img/base-ondas.svg) no-repeat -50px bottom !important;
     height: 100px;
-    background-size: 700px;
+    background-size: cover;
     display: flex;
 }
 
