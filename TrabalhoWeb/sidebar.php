@@ -1,5 +1,22 @@
 <?php
   include("protect.php");
+  include("conexao.php");
+
+    $id_imagem = 1;
+
+    $sql_code = "SELECT `profile` FROM `Admin` WHERE id = $id_imagem";
+    $result = $mysqli->query($sql_code);
+  
+    if ($result && $result->num_rows > 0) {
+        // Recupera o caminho da imagem
+        $row = $result->fetch_assoc();
+        $caminho_imagem = $row['./img/iconmm.png'];
+  
+        // Exibe a imagem
+        echo "<img src='" . $caminho_imagem . "' alt='Minha Imagem'>";
+    }
+  
+    $mysqli->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,34 +46,67 @@
   padding-left: 10px;
 }
 
+.nav-border-bottom {
+  background: url(./img/base-ondas.svg) no-repeat -50px bottom !important;
+  border-bottom: 5px solid #00bd19;
+}
+
+.icon-color {
+  color: #4caf50;
+}
+
+img {
+  width: 10rem;
+  height: auto;
+}
+
 </style>
 
 <body>
     
 
-<nav class="navbar navbar-light bg-light shadow">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-start">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo-governo.svg" class="img-fluid" alt="Logo 1">
+      </a>
+      <a class="navbar-brand" href="#">
+        <img src="img/logo-mm.svg" class="img-fluid" alt="Logo 1">
+      </a>
+    </div>
+    <div class="d-flex align-items-center justify-content-end">
+      <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-list icon-color"></i>
       </button>
     </div>
-  </nav>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-light bg-light nav-border-bottom" style="height: 50px;">
+
+</nav>
+
   
   <div class="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
-            Olá, <?php echo $_SESSION['nome'];?>
+            Olá, <?php echo $_SESSION['usuario'];?>
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg icon-color"></i>
+          </button>
         </div>
         <div class="modal-body">
   
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><i class="bi bi-file-earmark-fill" style="color: #4caf50;"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário Socioeconômicos</a></li>
-            <li class="list-group-item"><i class="bi bi-lungs-fill" style="color: #4caf50;"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário de Saúde</a></li>
-            <li class="list-group-item"><i class="bi bi-bar-chart-fill" style="color: #4caf50;"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Relatório</a></li>
+            <li class="list-group-item"><i class="bi bi-file-earmark-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário Socioeconômicos</a></li>
+            <li class="list-group-item"><i class="bi bi-lungs-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário de Saúde</a></li>
+            <li class="list-group-item"><i class="bi bi-bar-chart-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Relatório</a></li>
           </ul>
   
         </div>
@@ -71,7 +121,6 @@
       </div>
     </div>
   </div>
-  
 
   <div class="container text-center">
   
