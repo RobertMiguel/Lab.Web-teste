@@ -1,22 +1,18 @@
 <?php
-  include("protect.php");
-  include("conexao.php");
+include("protect.php");
+include("conexao.php");
 
-    $id_imagem = 1;
+$id_imagem = 1;
 
-    $sql_code = "SELECT `profile` FROM `Admin` WHERE id = $id_imagem";
-    $result = $mysqli->query($sql_code);
-  
-    if ($result && $result->num_rows > 0) {
-        // Recupera o caminho da imagem
-        $row = $result->fetch_assoc();
-        $caminho_imagem = $row['./img/iconmm.png'];
-  
-        // Exibe a imagem
-        echo "<img src='" . $caminho_imagem . "' alt='Minha Imagem'>";
-    }
-  
-    $mysqli->close();
+$sql_code = "SELECT * FROM `Admin` WHERE profile = './img/iconmm.png'";
+$result = $mysqli->query($sql_code);
+
+if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $profile = $row['profile'];
+}
+
+$mysqli->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,12 +28,15 @@
 </head>
 
 <style>
+
 .modal {
   width: 300px;
 }
+
 .modal-content {
   width: 300px;
 }
+
 .list-group-item:hover {
   background-color: rgba(59, 57, 57, 0.164) !important;
 }
@@ -58,6 +57,13 @@
 img {
   width: 10rem;
   height: auto;
+}
+
+.profile-image {
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 </style>
@@ -93,14 +99,21 @@ img {
   <div class="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
+      <div class="modal-header d-flex justify-content-between">
+        <div class="text-center ms-auto me-5">
+          <?php echo "<img src='" . $profile . "' alt='Minha Imagem' class='profile-image rounded'>"; ?>
+          <h5 class="modal-title mt-2" id="exampleModalLabel">
             Olá, <?php echo $_SESSION['usuario'];?>
           </h5>
-          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
-            <i class="bi bi-x-lg icon-color"></i>
-          </button>
         </div>
+        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-x-lg icon-color"></i>
+        </button>
+      </div>
+
+
+
+        
         <div class="modal-body">
   
           <ul class="list-group list-group-flush">
