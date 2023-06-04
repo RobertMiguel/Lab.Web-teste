@@ -1,36 +1,67 @@
 .modal {
-width: 300px;
+    width: 300px;
 }
 
 .modal-content {
-width: 300px;
+    width: 300px;
+}
+
+.modal.fade .modal-dialog {
+    transition-duration: 0.3s;
+}
+
+.custom-modal-left .modal-dialog {
+    transform: translateX(-100%);
+    animation: modal-open 0.5s;
+}
+  
+  @keyframes modal-open {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+}
+
+@keyframes modal-close {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+}
+
+.right-to-left .modal-dialog {
+animation: modal-open 0.5s;
 }
 
 .list-group-item:hover {
-background-color: rgba(59, 57, 57, 0.164) !important;
+    background-color: rgba(59, 57, 57, 0.164) !important;
 }
 
 .custom-padding-left {
-padding-left: 10px;
+    padding-left: 10px;
 }
 
 .nav-border-bottom {
-background: url(../img/base-ondas.svg) no-repeat -50px bottom !important;
-border-bottom: 5px solid #00bd19;
+    background: url(../img/base-ondas.svg) no-repeat -50px bottom !important;
+    border-bottom: 5px solid #00bd19;
 }
 
 .icon-color {
-color: #4caf50;
+    color: #4caf50;
 }
 
 img {
-width: 10rem;
-height: auto;
+    width: 10rem;
+    height: auto;
 }
 
 .profile-image {
-width: 80px;
-height: auto;
-border-radius: 50%;
-object-fit: cover;
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
 }
