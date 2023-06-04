@@ -38,4 +38,3 @@ https://user-images.githubusercontent.com/90520597/233246026-22ab9a07-3b21-4009-
 https://user-images.githubusercontent.com/90520597/233246265-2c45fb2a-1138-4270-94ef-6f49329b7e8a.mp4
 
 <h1 align="center">【📊】Desmotração Relatórios </h1>
-
