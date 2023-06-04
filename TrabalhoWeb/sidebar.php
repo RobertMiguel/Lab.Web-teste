@@ -2,8 +2,6 @@
 include("protect.php");
 include("conexao.php");
 
-$id_imagem = 1;
-
 $sql_code = "SELECT * FROM `Admin` WHERE profile = './img/iconmm.png'";
 $result = $mysqli->query($sql_code);
 
@@ -69,7 +67,6 @@ img {
 </style>
 
 <body>
-    
 
 <nav class="navbar">
   <div class="container-fluid">
@@ -89,13 +86,10 @@ img {
   </div>
 </nav>
 
-
-
 <nav class="navbar navbar-light bg-light nav-border-bottom" style="height: 50px;">
 
 </nav>
 
-  
   <div class="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
@@ -111,9 +105,6 @@ img {
         </button>
       </div>
 
-
-
-        
         <div class="modal-body">
   
           <ul class="list-group list-group-flush">
@@ -133,10 +124,6 @@ img {
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="container text-center">
-  
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
