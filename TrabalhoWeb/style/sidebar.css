@@ -6,37 +6,6 @@
     width: 300px;
 }
 
-.modal.fade .modal-dialog {
-    transition-duration: 0.3s;
-}
-
-.custom-modal-left .modal-dialog {
-    transform: translateX(-100%);
-    animation: modal-open 0.5s;
-}
-  
-  @keyframes modal-open {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-}
-
-@keyframes modal-close {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-}
-
-.right-to-left .modal-dialog {
-animation: modal-open 0.5s;
-}
-
 .list-group-item:hover {
     background-color: rgba(59, 57, 57, 0.164) !important;
 }

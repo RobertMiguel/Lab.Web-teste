@@ -51,7 +51,7 @@ $mysqli->close();
 
 </nav>
 
-  <div class="modal fade custom-modal-left" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
