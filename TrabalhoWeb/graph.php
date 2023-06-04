@@ -51,7 +51,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM form3;")) {
     <div class="container-fluid mt-4 text-center">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 font-weight-light">Gráficos</h1>
-            <a href="gerar_pdf.php" class="btn btn-sm shadow-sm">
+            <a href="gerar_pdf.php" class="btn btn-sm">
                 <button type="submit" class="btn btn-outline-success" name="relatorio">Baixar Relatórios</button>
             </a>
         </div>
@@ -140,7 +140,14 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM form3;")) {
         </div>
 
         <div class="row">
-
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Visão Geral</h6>
+                </div>
+                <div class="card-body">
+                    
+                </div>
+            </div>
         </div>
 
         <div class="row">

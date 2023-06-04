@@ -71,7 +71,7 @@ $mysqli->close();
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><i class="bi bi-file-earmark-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário Socioeconômicos</a></li>
             <li class="list-group-item"><i class="bi bi-lungs-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Formulário de Saúde</a></li>
-            <li class="list-group-item"><i class="bi bi-bar-chart-fill icon-color"></i><a href="#" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Relatório</a></li>
+            <li class="list-group-item"><i class="bi bi-bar-chart-fill icon-color"></i><a href="graph.php" class="link-offset-2 link-underline link-underline-opacity-0 custom-padding-left text-secondary">Relatório</a></li>
           </ul>
   
         </div>
