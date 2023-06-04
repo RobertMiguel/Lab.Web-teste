@@ -1,0 +1,13 @@
+.custom-icon {
+    color: #4caf50;
+    font-size: 30px;
+}
+
+.card.card-border-left {
+    border-left: 0.25rem solid #4caf50 !important;
+    border-radius: 0.35rem;
+}
+
+.custom-title {
+    font-style: 1.75rem;
+}

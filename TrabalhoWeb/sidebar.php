@@ -23,48 +23,9 @@ $mysqli->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Estilização da Página -->
+    <link rel="stylesheet" href="style/sidebar.css">
 </head>
-
-<style>
-
-.modal {
-  width: 300px;
-}
-
-.modal-content {
-  width: 300px;
-}
-
-.list-group-item:hover {
-  background-color: rgba(59, 57, 57, 0.164) !important;
-}
-
-.custom-padding-left {
-  padding-left: 10px;
-}
-
-.nav-border-bottom {
-  background: url(./img/base-ondas.svg) no-repeat -50px bottom !important;
-  border-bottom: 5px solid #00bd19;
-}
-
-.icon-color {
-  color: #4caf50;
-}
-
-img {
-  width: 10rem;
-  height: auto;
-}
-
-.profile-image {
-  width: 80px;
-  height: auto;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-</style>
 
 <body>
 

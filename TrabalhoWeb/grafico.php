@@ -384,7 +384,7 @@
               include "conexao.php";
 
               // Verifica erros na conexão com o banco de dados
-              if($mysqli->connect_errno) {
+              if($mysqli->connect_error) {
                 die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
               }
 
