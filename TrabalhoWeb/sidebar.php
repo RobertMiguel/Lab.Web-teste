@@ -2,7 +2,7 @@
 include("protect.php");
 include("conexao.php");
 
-$sql_code = "SELECT * FROM `Admin` WHERE profile = './img/iconmm.png'";
+$sql_code = "SELECT * FROM `Admin` WHERE profile = './assets/iconmm.png'";
 $result = $mysqli->query($sql_code);
 
 if ($result && $result->num_rows > 0) {
@@ -24,7 +24,7 @@ $mysqli->close();
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Estilização da Página -->
-    <link rel="stylesheet" href="style/sidebar.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
 </head>
 
 <body>
@@ -33,10 +33,10 @@ $mysqli->close();
   <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-start">
       <a class="navbar-brand" href="#">
-        <img src="img/logo-governo.svg" class="img-fluid" alt="Logo 1">
+        <img src="assets/logo-governo.svg" class="img-fluid" alt="Logo 1">
       </a>
       <a class="navbar-brand" href="#">
-        <img src="img/logo-mm.svg" class="img-fluid" alt="Logo 1">
+        <img src="assets/logo-mm.svg" class="img-fluid" alt="Logo 1">
       </a>
     </div>
     <div class="d-flex align-items-center justify-content-end">
@@ -51,7 +51,7 @@ $mysqli->close();
 
 </nav>
 
-  <div class="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal true custom-modal-left" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">

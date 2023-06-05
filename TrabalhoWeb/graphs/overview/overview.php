@@ -1,20 +1,5 @@
 <html>
   <head>
-  <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/iconmm.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/iconmm.png">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <title>EEEP Manoel Mano | Relatório Sociecômico</title>
 
     <!-- Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -29,7 +14,7 @@
         var data = google.visualization.arrayToDataTable([
             ['Cursos', 'Quantidade de Alunos', 'Porcentagem'],
             <?php
-              include ("../../../conexao.php");
+              include ("../../conexao.php");
 
               // Verifica erros na conexão com o banco de dados
               if($mysqli->connect_errno) {
@@ -37,7 +22,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM form3)) * 100, 2), '%') AS porcentagem_alunos FROM form3 WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
+              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
