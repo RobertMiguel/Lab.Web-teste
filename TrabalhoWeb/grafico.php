@@ -113,7 +113,7 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-            ['Pais Empregadas', 'Quantidade de Pais', 'Porcentagem'],
+            ['Pais Empregados', 'Quantidade de Pais', 'Porcentagem'],
             <?php
               include "conexao.php";
 

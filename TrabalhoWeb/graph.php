@@ -106,6 +106,60 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
         drawChart();
     });
     </script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var container = document.getElementById('employed-parents');
+            var chartWidth = container.offsetWidth;
+            var chartHeight = 250; // Altura desejada do gráfico
+
+            var data = google.visualization.arrayToDataTable([
+                ['Pais Empregados', 'Quantidade de Pais', 'Porcentagem'],
+                <?php
+              include ("conexao.php");
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregado; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['empregado'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+            ]);
+
+            var options = {
+                title: 'Quantidade de Pais Empregados',
+                subtitle: 'Porcentagem de cada pai por aluno',
+                width: chartWidth,
+                height: chartHeight,
+                pieHole: 0.4, // Define o tamanho do furo no gráfico de pizza (0 - 1)
+            };
+
+            var chart = new google.visualization.PieChart(container);
+            chart.draw(data, options);
+        }
+
+        // Redimensionar o gráfico quando a janela for redimensionada
+        window.addEventListener('resize', function() {
+            drawChart();
+        });
+    </script>
 </head>
 <body>
     
@@ -205,18 +259,30 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
         <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
-                    <div class="card-header py-3 d-flex flex-row justify-content-between">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-success">Visão Geral</h6>
-                        <!-- <div class="dropdown no-arrow">
-                            <a href="#" class="nav-link dropdown-toggle" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-                        </div> -->
                         <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Número total de alunos em cada curso especificado no filtro e a porcentagem de cada curso em relação ao número total de alunos">
                             <i class="bi bi-info-square-fill text-success"></i>
                         </button>
                     </div>
                     <div class="card-body align-items-start">
                         <div id="overview" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Visão Geral</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Número total de alunos em cada curso especificado no filtro e a porcentagem de cada curso em relação ao número total de alunos">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
