@@ -8,6 +8,11 @@
     border-radius: 0.35rem;
 }
 
+.card-title {
+    background-color: transparent;
+    text-decoration: none;
+}
+
 .custom-title {
     font-style: 1.75rem;
 }
