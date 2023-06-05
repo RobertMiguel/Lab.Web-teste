@@ -32,10 +32,10 @@ $mysqli->close();
 <nav class="navbar">
   <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-start">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="https://www.ceara.gov.br/" target="_blank">
         <img src="assets/logo-governo.svg" class="img-fluid" alt="Logo 1">
       </a>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="https://eeepmanoelmano.com.br/" target="_blank">
         <img src="assets/logo-mm.svg" class="img-fluid" alt="Logo 1">
       </a>
     </div>
@@ -86,6 +86,10 @@ $mysqli->close();
       </div>
     </div>
   </div>
+  
+  <a href="#page-top" class="scroll-to-top rounded" style="display: none;">
+      <i class="fas fa-angle-up"></i>
+  </a>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

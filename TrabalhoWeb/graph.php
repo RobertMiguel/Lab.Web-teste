@@ -113,7 +113,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
 
     <div class="container-fluid mt-4 text-center">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800 font-weight-light">Gráficos</h1>
+            <h1 class="h3 mb-0 text-gray-800 text-success font-weight-light">Gráficos</h1>
             <a href="gerar_pdf.php" class="btn btn-sm">
                 <button type="submit" class="btn btn-outline-success" name="relatorio">Baixar Relatórios</button>
             </a>
@@ -205,7 +205,15 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
         <div class="row px-3">
             <div class="card shadow mb-4 mx-auto ">
                 <div class="card-header py-3 d-flex flex-row justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Visão Geral</h6>
+                    <h6 class="m-0 font-weight-bold text-success">Visão Geral</h6>
+                    <!-- <div class="dropdown no-arrow">
+                        <a href="#" class="nav-link dropdown-toggle" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </a>
+                    </div> -->
+                    <div class="dropdown">
+                        
+                    </div>
                 </div>
                 <div class="card-body align-items-start">
                     <div id="overview" style="height: 250px; width: 100%;"></div>

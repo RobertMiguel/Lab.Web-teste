@@ -33,7 +33,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM form3)) * 100, 2), '%') AS porcentagem_alunos FROM form3 WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
+              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -78,7 +78,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregadoMae; ";
+              $sql = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregadoMae; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -123,7 +123,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregado; ";
+              $sql = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregado; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -168,7 +168,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escolaridadePai; ";
+              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escolaridadePai; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -213,7 +213,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+              $sql = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escola2; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -258,7 +258,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoMora; ";
+              $sql = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoMora; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -303,7 +303,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY moradia; ";
+              $sql = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY moradia; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -348,7 +348,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY rendaMensalFamiliar; ";
+              $sql = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY rendaMensalFamiliar; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
@@ -393,7 +393,7 @@
               }
 
               // Consulta o total de alunos em cada curso
-              $sql = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoEnsinoFundamental; ";
+              $sql = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoEnsinoFundamental; ";
               $result = mysqli_query($mysqli, $sql);
 
               // Verifica erros na consulta
