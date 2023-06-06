@@ -1,4 +1,6 @@
 <?php
+include("protect.php");
+
 include("conexao.php");
 
 // Total de Nomes
@@ -106,6 +108,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
         drawChart();
     });
     </script>
+    <!-- Pais Empregados -->
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -118,7 +121,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             var data = google.visualization.arrayToDataTable([
                 ['Pais Empregados', 'Quantidade de Pais', 'Porcentagem'],
                 <?php
-              include ("conexao.php");
+                    include ("conexao.php");
 
               // Verifica erros na conexão com o banco de dados
               if($mysqli->connect_errno) {
@@ -137,6 +140,61 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
               // Monta o array de dados do gráfico
               while($dados = mysqli_fetch_array($result)) {
                 echo "['" . $dados['empregado'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+
+              $mysqli->close();
+            ?>
+            ]);
+
+            var options = {
+                title: 'Quantidade de Pais Empregados',
+                subtitle: 'Porcentagem de cada pai por aluno',
+                width: chartWidth,
+                height: chartHeight,
+                pieHole: 0.4, // Define o tamanho do furo no gráfico de pizza (0 - 1)
+            };
+
+            var chart = new google.visualization.PieChart(container);
+            chart.draw(data, options);
+        }
+
+        // Redimensionar o gráfico quando a janela for redimensionada
+        window.addEventListener('resize', function() {
+            drawChart();
+        });
+    </script>
+    <!-- Escolaridade do Pai -->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var container = document.getElementById('employed-parents');
+            var chartWidth = container.offsetWidth;
+            var chartHeight = 250; // Altura desejada do gráfico
+
+            var data = google.visualization.arrayToDataTable([
+                ['Escolaridade', 'Quantidade de Pais', 'Porcentagem'],
+                <?php
+              include ("conexao.php");
+
+              // Verifica erros na conexão com o banco de dados
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+
+              // Consulta o total de alunos em cada curso
+              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escolaridadePai; ";
+              $result = mysqli_query($mysqli, $sql);
+
+              // Verifica erros na consulta
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+
+              // Monta o array de dados do gráfico
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escolaridadePai'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
               }
 
               $mysqli->close();

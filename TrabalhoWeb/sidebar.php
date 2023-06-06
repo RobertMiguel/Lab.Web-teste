@@ -1,5 +1,4 @@
 <?php
-include("protect.php");
 include("conexao.php");
 
 $sql_code = "SELECT * FROM `Admin` WHERE profile = './assets/iconmm.png'";
