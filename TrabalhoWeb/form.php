@@ -81,12 +81,12 @@
             </select>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="nac" placeholder="Nacionalidade" class="form-control shadow-none" id="nac" oninput="handleInput(event)" required>
-            <label class="text-secondary" for="nac">Nacionalidade</label>
+            <input type="text" name="nac" placeholder="Nacional." class="form-control shadow-none" id="nac" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="nac">Nacional.</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="nat" placeholder="Naturalidade" class="form-control shadow-none" id="nat" oninput="handleInput(event)"required>
-            <label class="text-secondary" for="nat">Naturalidade</label>
+            <input type="text" name="nat" placeholder="Natural." class="form-control shadow-none" id="nat" oninput="handleInput(event)"required>
+            <label class="text-secondary" for="nat">Natural.</label>
           </div>
 
         </div>
@@ -94,8 +94,8 @@
         <div class="row mb-3">
 
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="loc" placeholder="Localização" class="form-control shadow-none" id="loc" oninput="handleInput(event)" required>
-            <label class="text-secondary" for="loc">Localização</label>
+            <input type="text" name="loc" placeholder="Localiz." class="form-control shadow-none" id="loc" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="loc">Localiz.</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="cel" placeholder="Telefone" class="form-control shadow-none" id="cel" maxlength="11" oninput="mascarra('cel')" required>
@@ -120,15 +120,15 @@
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
             <input type="text" name="cpfpai" placeholder="N° do CPF" class="form-control shadow-none" id="cpfpai" maxlength="11" oninput="mascaraCP('CpfPai')" required>
-            <label class="text-secondary" for="cpfpai">N° do CPF</label>
+            <label class="text-secondary" for="cpfpai">CPF</label>
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-            <input type="text" name="telefonePai" placeholder="Tel. de contato" class="form-control shadow-none" id="telefonePai" maxlength="11" oninput="mascaraa('TelPai')" required>
-            <label class="text-secondary" for="telefonePai">Tel. de contato</label>
+            <input type="text" name="telefonePai" placeholder="Celular" class="form-control shadow-none" id="telefonePai" maxlength="11" oninput="mascaraa('TelPai')" required>
+            <label class="text-secondary" for="telefonePai">Celul.</label>
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
             <input type="text" name="pf" placeholder="Profissão" class="form-control shadow-none" id="pf" oninput="handleInput(event)" required>
-            <label for="pf" class="text-secondary">Profissão</label>
+            <label for="pf" class="text-secondary">Prof.</label>
           </div>
 
         </div>
@@ -141,15 +141,15 @@
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
               <input type="text" name="cpfMae" placeholder="N° do CPF" class="form-control shadow-none" id="cpfMae" maxlength="11" oninput="mascaraCP('CpfPai')" required>
-              <label class="text-secondary" for="cpfMae">N° do CPF</label>
+              <label class="text-secondary" for="cpfMae">CPF</label>
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-              <input type="text" name="telefoneMae" placeholder="Tel. de contato" class="form-control shadow-none" id="telefoneMae" maxlength="11" oninput="mascaraa('TelPai')" required>
-              <label class="text-secondary" for="telefoneMae">Tel. de contato</label>
+              <input type="text" name="telefoneMae" placeholder="Celular" class="form-control shadow-none" id="telefoneMae" maxlength="11" oninput="mascaraa('TelPai')" required>
+              <label class="text-secondary" for="telefoneMae">Celul.</label>
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
               <input type="text" name="pf2" placeholder="Profissão" class="form-control shadow-none" id="pf2" oninput="handleInput(event)" required>
-              <label for="pf2" class="text-secondary">Profissão</label>
+              <label for="pf2" class="text-secondary">Prof</label>
             </div>
         </div>
 
@@ -172,7 +172,7 @@
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="dt" placeholder="Motorista" class="form-control shadow-none" id="dt" oninput="handleInput(event)">
-            <label for="dt" class="text-secondary">Mororista</label>
+            <label class="text-secondary" for="dt">Mororista</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="bolsaFamilia">
@@ -183,7 +183,7 @@
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="nis" placeholder="NISS" class="form-control shadow-none" id="nis" maxlength="14">
-            <label for="nis" class="text-secondary">NISS</label>
+            <label class="text-secondary" for="nis">NISS</label>
           </div>
         </div>
 
@@ -197,14 +197,14 @@
           </div>
           <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
             <input type="text" name="rec" placeholder="Recursos necessários para participação em avaliações externas" class="form-control shadow-none" id="rec" oninput="handleInput(event)">
-            <label for="rec" class="text-secondary">Recursos necessários para participação em avaliações externas</label>
+            <label class="text-secondary" for="rec">Recursos necessários</label>
           </div>
         </div>
 
         </div>
     </div>
 
-    <div class="container mt-4 px-md-0">
+    <!-- <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
           <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Detalhamento da Matrícula</h2>
@@ -264,9 +264,9 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
-    <div class="container mt-4 px-md-0">
+    <!-- <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
           <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Progressa Parcial</h2>
@@ -326,7 +326,7 @@
         </div>
 
       </div>
-    </div>  
+    </div>   -->
 
     <div class="container border-start border-4 border-warning mt-4 px-md-0">
       <div class="order-form-container">
@@ -338,13 +338,93 @@
 
         <div class="row mb-3">
           
-          <div class="form-floating form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="nomepai" placeholder="Nome do Pai" class="form-control shadow-none" id="nomepai" oninput="handleInput(event)" required>
-            <label for="nomepai" class="text-secondary">Nome do Pai</label>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="ipai" placeholder="Idade do Pai" class="form-control shadow-none" id="ipai" required>
+            <label class="text-secondary" for="ipai">Idad. Pai</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="ppai" placeholder="Profissão do Pai" class="form-control shadow-none" id="ppai" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="ppai">Prof. Pai</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="escolPai" id="escol">
+              <option selected>Escolaridade</option>
+              <option value="ENSINO FUNDAMENTAL COMPLETO">ENSINO FUNDAMENTAL COMPLETO</option>
+              <option value="ENSINO FUNDAMENTAL INCOMPLETO">ENSINO FUNDAMENTAL INCOMPLETO</option>
+              <option value="ENSINO MÉDIO COMPLETO">ENSINO MÉDIO COMPLETO</option>
+              <option value="ENSINO MÉDIO INCOMPLETO">ENSINO MÉDIO INCOMPLETO</option>
+              <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
+              <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="empPai" id="emp">
+              <option selected>Está Empregado</option>
+              <option value="SIM">SIM</option>
+              <option value="NÃO">NÃO</option>
+            </select>
           </div>
 
-          
+        </div>
 
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="imae" placeholder="Idade da Mãe" class="form-control shadow-none" id="imae" required>
+            <label class="text-secondary" for="imae">Idad. Mãe</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="pmae" placeholder="Profissão da Mãe" class="form-control shadow-none" id="pmae" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="pmae">Prof. Mãe</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+          <select class="form-select text-secondary" name="escol2" id="escol2">
+            <option selected>Escolaridade</option>
+            <option value="ENSINO FUNDAMENTAL COMPLETO">ENSINO FUNDAMENTAL COMPLETO</option>
+            <option value="ENSINO FUNDAMENTAL INCOMPLETO">ENSINO FUNDAMENTAL INCOMPLETO</option>
+            <option value="ENSINO MÉDIO COMPLETO">ENSINO MÉDIO COMPLETO</option>
+            <option value="ENSINO MÉDIO INCOMPLETO">ENSINO MÉDIO INCOMPLETO</option>
+            <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
+            <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
+          </select>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="empMae" id="emmp2">
+              <option selected>Está Empregado</option>
+              <option value="SIM">SIM</option>
+              <option value="NÃO">NÃO</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Caso o aluno tenha outro responsável</h3>
+
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="ir" placeholder="Idade" class="form-control form-control-sm" id="ir">
+            <label class="text-secondary" for="ir">Idade</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+          <input type="text" name="pr" placeholder="Profissão" class="form-control form-control-sm" id="pr" oninput="handleInput(event)">
+          <label class="text-secondary" for="pr">Profissão</label>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="escol3" id="escol3">
+              <option selected>Escolaridade</option>
+              <option value="ENSINO FUNDAMENTAL COMPLETO">ENSINO FUNDAMENTAL COMPLETO</option>
+              <option value="ENSINO FUNDAMENTAL INCOMPLETO">ENSINO FUNDAMENTAL INCOMPLETO</option>
+              <option value="ENSINO MÉDIO COMPLETO">ENSINO MÉDIO COMPLETO</option>
+              <option value="ENSINO MÉDIO INCOMPLETO">ENSINO MÉDIO INCOMPLETO</option>
+              <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
+              <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="emp3" id="emp3">
+              <option selected>Está Empregado(a)</option>
+              <option value="SIM">SIM</option>
+              <option value="NÃO">NÃO</option>
+            </select>
+          </div>
         </div>
 
       </div>
