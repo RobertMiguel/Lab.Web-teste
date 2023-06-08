@@ -67,7 +67,7 @@
             <option selected>SEXO</option>
             <option value="MASCULINO">MASCULINO</option>
             <option value="FEMININO">FEMININO</option>
-            <option value="OUTROS">OUTROS</option>
+            <option value="OUTRO">OUTROS</option>
           </select>
         </div>
         <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
@@ -76,7 +76,7 @@
             <option value="BRANCO">BRANCO</option>
             <option value="NEGRO">NEGRO</option>
             <option value="PARDO">PARDO</option>
-            <option value="OUTRAS">OUTRAS</option>
+            <option value="OUTRO">OUTRAS</option>
           </select>
         </div>
         <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
@@ -99,13 +99,51 @@
           <label class="text-secondary" for="cel">Telefone</label>
         </div>
         <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-          <input type="text" name="telpai" placeholder="Telefone" class="form-control shadow-none" id="telpai" maxlength="11" oninput="mascarra('TelPai')" required>
+          <input type="text" name="telpai" placeholder="Telefone" class="form-control shadow-none" id="telpai" maxlength="11" oninput="mascaraa('TelPai')" required>
           <label class="text-secondary" for="telpai">Celular</label>
         </div>
         <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
           <input type="email" name="emailmae" placeholder="E-mail" class="form-control shadow-none" id="emailmae" required>
           <label for="emailmae" class="text-secondary">E-mail</label>
         </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+          <input type="text" name="nomepai" placeholder="Nome do Pai" class="form-control shadow-none" id="nomepai" oninput="handleInput(event)" required>
+          <label class="text-secondary" for="nomepai">Nome do Pai</label>
+        </div>
+        <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+          <input type="text" name="cpfpai" placeholder="N° do CPF" class="form-control shadow-none" id="cpfpai" maxlength="11" oninput="mascaraCP('CpfPai')" required>
+          <label class="text-secondary" for="cpfpai">N° do CPF</label>
+        </div>
+        <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+          <input type="text" name="telefonePai" placeholder="Tel. de contato" class="form-control shadow-none" id="telefonePai" maxlength="11" oninput="mascaraa('TelPai')" required>
+          <label class="text-secondary" for="telefonePai">Tel. de contato</label>
+        </div>
+        <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+          <input type="text" name="pf" placeholder="Profissão" class="form-control shadow-none" id="pf" oninput="handleInput(event)" required>
+          <label for="pf" class="text-secondary">Profissão</label>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <input type="text" name="nomemae" placeholder="Nome do Mãe" class="form-control shadow-none" id="nomemae" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="nomemae">Nome do Mãe</label>
+          </div>
+          <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+            <input type="text" name="cpfMae" placeholder="N° do CPF" class="form-control shadow-none" id="cpfMae" maxlength="11" oninput="mascaraCP('CpfPai')" required>
+            <label class="text-secondary" for="cpfMae">N° do CPF</label>
+          </div>
+          <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+            <input type="text" name="telefoneMae" placeholder="Tel. de contato" class="form-control shadow-none" id="telefoneMae" maxlength="11" oninput="mascaraa('TelPai')" required>
+            <label class="text-secondary" for="telefoneMae">Tel. de contato</label>
+          </div>
+          <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
+            <input type="text" name="pf2" placeholder="Profissão" class="form-control shadow-none" id="pf2" oninput="handleInput(event)" required>
+            <label for="pf2" class="text-secondary">Profissão</label>
+          </div>
       </div>
 
     </div>
