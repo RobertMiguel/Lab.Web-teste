@@ -207,8 +207,146 @@
     <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
-          <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Dados Complementares</h2>
+          <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Detalhamento da Matrícula</h2>
         </div>
+
+        <div class="row mb-3">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Ano Letivo</th>
+                <th scope="col">Série/Turma</th>
+                <th scope="col">Data de Matrícula</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>
+                  <input type="year" name="anolet1" class="form-control form-control-sm" id="anolet1" maxlength="4">
+                </td>
+                <td>
+                  <input type="text" name="turma1" class="form-control form-control-sm" id="turma1" maxlength="1">
+                </td>
+                <td>
+                  <input type="date" name="datamt1" class="form-control text-secondary form-control-sm" id="datamt1">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>
+                  <input type="year" name="anolet2" class="form-control form-control-sm" id="anolet2" maxlength="4">
+                </td>
+                <td>
+                  <input type="text" name="turma2" class="form-control form-control-sm" id="turma2" maxlength="1">
+                </td>
+                <td>
+                  <input type="date" name="datamt2" class="form-control text-secondary form-control-sm" id="datamt2">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>
+                  <input type="year" name="anolet3" class="form-control form-control-sm" id="anolet3" maxlength="4">
+                </td>
+                <td>
+                  <input type="text" name="turma3" class="form-control form-control-sm" id="turma3" maxlength="1">
+                </td>
+                <td>
+                  <input type="date" name="datamt3" class="form-control text-secondary form-control-sm" id="datamt3">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4 px-md-0">
+      <div class="order-form-container">
+        <div class="form-header">
+          <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Progressa Parcial</h2>
+        </div>
+
+        <div class="row mb-3">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Ano Letivo</th>
+                <th scope="col">Série/Turma</th>
+                <th scope="col">Data de Matrícula</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>
+                  <input type="year" name="anolet1" class="form-control form-control-sm" id="anolet1" maxlength="4">
+                </td>
+                <td>
+                  <input type="text" name="turma1" class="form-control form-control-sm" id="turma1" maxlength="1">
+                </td>
+                <td>
+                  <input type="date" name="datamt1" class="form-control text-secondary form-control-sm" id="datamt1">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>
+                  <input type="year" name="anolet2" class="form-control form-control-sm" id="anolet2" maxlength="4">
+                </td>
+                <td>
+                  <input type="text" name="turma2" class="form-control form-control-sm" id="turma2" maxlength="1">
+                </td>
+                <td>
+                  <input type="date" name="datamt2" class="form-control text-secondary form-control-sm" id="datamt2">
+                </td>
+              </tr>
+              <tr>
+              <th scope="row">3</th>
+              <td>
+                <input type="year" name="anolet3" class="form-control form-control-sm" id="anolet3" maxlength="4">
+              </td>
+              <td>
+                <input type="text" name="turma3" class="form-control form-control-sm" id="turma3" maxlength="1">
+              </td>
+              <td>
+                <input type="date" name="datamt3" class="form-control text-secondary form-control-sm" id="datamt3">
+              </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+    </div>  
+
+    <div class="container border-start border-4 border-warning mt-4 px-md-0">
+      <div class="order-form-container">
+        <div class="form-header">
+          <h2 class="h3 mb-0 text-gray-800 text-warning font-weight-light pb-3">Questionário Socioeconômico do Aluno</h2>
+          <p class="text-secondary">O Questionário Socioeconômico do Aluno coleta dados sobre renda, moradia e recursos educacionais, fornecendo informações para ações de apoio e inclusão socioeconômica na educação.</p>
+          <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Dados referentes aos pais ou responsáveis</h3>
+        </div>
+
+        <div class="row mb-3">
+          
+          <div class="form-floating form-floating col-12 col-sm-3 mb-3 mb-sm-0">
+            <input type="text" name="nomepai" placeholder="Nome do Pai" class="form-control shadow-none" id="nomepai" oninput="handleInput(event)" required>
+            <label for="nomepai" class="text-secondary">Nome do Pai</label>
+          </div>
+
+          
+
+        </div>
+
       </div>
     </div>
 
