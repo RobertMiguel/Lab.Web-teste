@@ -48,9 +48,9 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EEEP Manoel Mano | Login</title>
         <!-- Favicon EEEP Manoel Mano -->
-        <link rel="icon" type="image/png" sizes="32x32" href="img/iconmm.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/iconmm.png">
         <!-- Estilização de Login -->
-        <link rel="stylesheet" href="style/login.css">
+        <link rel="stylesheet" href="./styles/login.css">
         <!-- Favicon da página -->
     </head>
     <body>
@@ -59,8 +59,8 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-0">
-                            <a href="https://www.ceara.gov.br/"><img src="./img/logo-governo.svg" alt="Logo do Governo do Ceará"></a>
-                            <a href="https://www.instagram.com/eeepmanoelmano/"><img src="./img/logo-mm.svg" alt="Logo da EEEP Manoel Mano"></a>
+                            <a href="https://www.ceara.gov.br/"><img src="./assets/logo-governo.svg" alt="Logo do Governo do Ceará"></a>
+                            <a href="https://www.instagram.com/eeepmanoelmano/"><img src="./assets/logo-mm.svg" alt="Logo da EEEP Manoel Mano"></a>
                         </div>
                         <div class="col-0">
                             <h3>Faça seu Login</h3>
@@ -73,9 +73,9 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
             <div class="area-formulario">
                 <div class="formulario">
                     <form action=""method="POST">
-                        <label for="usuario"><span><img src="img/icon-email.png" alt="Usuario"></span> Usuário</label>
+                        <label for="usuario"><span><img src="assets/icon-email.png" alt="Usuario"></span> Usuário</label>
                     <input type="text" id="nu" name="usuario" placeholder="Digite o nome de usuário"> 
-                        <label for="senha"><span><img src="img/icon-password.png" alt="Senha"></span> Senha</label> 
+                        <label for="senha"><span><img src="assets/icon-password.png" alt="Senha"></span> Senha</label> 
     <input type="password" name="senha" placeholder="Digite a senha">
 
                         <div class="submit">
@@ -86,7 +86,7 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
             </div>
     <!--  </div> -->
             <footer>
-            <img src="img/./ondas-governo-rodape.png">
+            <img src="./assets/ondas-governo-rodape.png">
             </footer>
 
     </body>

@@ -7,34 +7,17 @@ include('protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/iconmm.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/iconmm.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style/dados.css">
+    <link rel="stylesheet" href="styles/dados.css">
     <title>EEEP Manoel Mano | Dados socioeconômicos</title>
 </head>
 <body>
-    <header>
-        <div class="main-menu">
-            <div class="bar"></div>
-            <div class="col-0">
-                <a href="https://www.ceara.gov.br/"><img src="img/logo-governo.svg" alt="Logo do Governo do Ceará"></a>
-                <a href="https://www.instagram.com/eeepmanoelmano/"><img src="img/logo-mm.svg" alt="Logo da EEEP Manoel Mano"></a>
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            Relatórios
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./grafico.php">Relatório Socioeconômico</a></li>
-                            <li><a class="dropdown-item" href="#">Relatório de Saúde</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+
+    <?php include("sidebar.php"); ?>
+
     <div class="container">
         <section class="bcgb">
             <span id="t"></span>
@@ -789,10 +772,10 @@ include('protect.php');
     </div>
     <br><br>
     <footer>
-        <img src="img/logo-mm.svg" alt="Logo da EEEP Manoel Mano" id="rp2">
-        <img src="img/./ondas-governo-rodape.png" id="rodape">
+        <img src="assets/logo-mm.svg" alt="Logo da EEEP Manoel Mano" id="rp2">
+        <img src="assets/./ondas-governo-rodape.png" id="rodape">
     </footer>
-    <script src="js/mask.js"></script>
+<script src="script/mask.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

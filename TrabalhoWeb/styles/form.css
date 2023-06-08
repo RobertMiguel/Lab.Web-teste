@@ -1,0 +1,25 @@
+:root {
+  --text-color: #007E33;
+  --text-secondary: #6c757d;
+}
+
+.container {
+  border-left: 0.25rem solid #4caf50 !important;
+  border: 0.35rem;
+}
+
+.order-form-container {
+  padding: 1.5rem;
+}
+
+.order-form-container select {
+  padding: 1rem .75rem;
+}
+
+.order-form-container .form-floating > label {
+  left: 1em;
+}
+
+.order-form-container input:focus {
+  border-color: var(--text-color);
+}

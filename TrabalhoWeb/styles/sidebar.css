@@ -15,7 +15,7 @@
 }
 
 .nav-border-bottom {
-    background: url(../img/base-ondas.svg) no-repeat -50px bottom !important;
+    background: url(../assets/base-ondas.svg) no-repeat -50px bottom !important;
     border-bottom: 5px solid #00bd19;
 }
 
