@@ -62,7 +62,6 @@
             <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Dados Adicionais</h2>
         </div>
         <div class="row mb-3">
-
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="sexo" id="sexo" required>
               <option selected>SEXO</option>
@@ -88,11 +87,8 @@
             <input type="text" name="nat" placeholder="Natural." class="form-control shadow-none" id="nat" oninput="handleInput(event)"required>
             <label class="text-secondary" for="nat">Natural.</label>
           </div>
-
         </div>
-
         <div class="row mb-3">
-
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="loc" placeholder="Localiz." class="form-control shadow-none" id="loc" oninput="handleInput(event)" required>
             <label class="text-secondary" for="loc">Localiz.</label>
@@ -109,11 +105,8 @@
             <input type="email" name="emailmae" placeholder="E-mail" class="form-control shadow-none" id="emailmae" required>
             <label for="emailmae" class="text-secondary">E-mail</label>
           </div>
-
         </div>
-
         <div class="row mb-3">
-
           <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
             <input type="text" name="nomepai" placeholder="Nome do Pai" class="form-control shadow-none" id="nomepai" oninput="handleInput(event)" required>
             <label class="text-secondary" for="nomepai">Nome do Pai</label>
@@ -130,11 +123,8 @@
             <input type="text" name="pf" placeholder="Profissão" class="form-control shadow-none" id="pf" oninput="handleInput(event)" required>
             <label for="pf" class="text-secondary">Prof.</label>
           </div>
-
         </div>
-
         <div class="row mb-3">
-
           <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
               <input type="text" name="nomemae" placeholder="Nome do Mãe" class="form-control shadow-none" id="nomemae" oninput="handleInput(event)" required>
               <label class="text-secondary" for="nomemae">Nome do Mãe</label>
@@ -152,7 +142,6 @@
               <label for="pf2" class="text-secondary">Prof</label>
             </div>
         </div>
-
       </div>
     </div>
 
@@ -161,7 +150,6 @@
         <div class="form-header">
           <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Dados Complementares</h2>
         </div>
-
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="transpEscolar" id="teun">
@@ -186,7 +174,6 @@
             <label class="text-secondary" for="nis">NISS</label>
           </div>
         </div>
-
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="deficiencia" id="dsd"> 
@@ -200,7 +187,6 @@
             <label class="text-secondary" for="rec">Recursos necessários</label>
           </div>
         </div>
-
         </div>
     </div>
 
@@ -335,9 +321,7 @@
           <p class="text-secondary">O Questionário Socioeconômico do Aluno coleta dados sobre renda, moradia e recursos educacionais, fornecendo informações para ações de apoio e inclusão socioeconômica na educação.</p>
           <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Dados referentes aos pais ou responsáveis</h3>
         </div>
-
         <div class="row mb-3">
-          
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="ipai" placeholder="Idade do Pai" class="form-control shadow-none" id="ipai" required>
             <label class="text-secondary" for="ipai">Idad. Pai</label>
@@ -364,9 +348,7 @@
               <option value="NÃO">NÃO</option>
             </select>
           </div>
-
         </div>
-
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <input type="text" name="imae" placeholder="Idade da Mãe" class="form-control shadow-none" id="imae" required>
@@ -395,16 +377,14 @@
             </select>
           </div>
         </div>
-
         <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Caso o aluno tenha outro responsável</h3>
-
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="ir" placeholder="Idade" class="form-control form-control-sm" id="ir">
+            <input type="text" name="ir" placeholder="Idade" class="form-control shadow-none" id="ir">
             <label class="text-secondary" for="ir">Idade</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-          <input type="text" name="pr" placeholder="Profissão" class="form-control form-control-sm" id="pr" oninput="handleInput(event)">
+          <input type="text" name="pr" placeholder="Profissão" class="form-control shadow-none" id="pr" oninput="handleInput(event)">
           <label class="text-secondary" for="pr">Profissão</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
@@ -426,7 +406,31 @@
             </select>
           </div>
         </div>
-
+        <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Dados referente a família</h3>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="mor" id="mor">
+              <option selected>Modaria</option>
+              <option value="PRÓPRIA">PRÓPRIA</option>
+              <option value="ALUGADA">ALUGADA</option>
+              <option value="OUTRA">OUTRA</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <input type="text" name="qi" placeholder="Quant. Irmãos" class="form-control shadow-none" id="qi" required>
+            <label class="text-secondary" for="qi">Quant. Irmãos</label>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="rms" id="rms">
+              <option selected>Renda Mensal</option>
+              <option value="MENOS DE 1 SALÁRIO MÍNIMO">MENOS DE 1 SALÁRIO MÍNIMO</option>
+              <option value="DE 1 A 2 SALÁRIOS MÍNIMOS">DE 1 A 2 SALÁRIOS MÍNIMOS</option>
+              <option value="DE 3 A 4 SALÁRIOS MÍNIMOS">DE 3 A 4 SALÁRIOS MÍNIMOS</option>
+              <option value="DE 4 A 5 SALÁRIOS MÍNIMOS">DE 4 A 5 SALÁRIOS MÍNIMOS</option>
+              <option value="MAIOR QUE 5 SALÁRIOS MÍNIMOS">MAIOR QUE 5 SALÁRIOS MÍNIMOS</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
 
