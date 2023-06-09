@@ -1,3 +1,8 @@
+<?php
+ include("conexao.php");
+ include("protect.php");
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,10 +20,50 @@
   </head>
   <body>
 
+  <?php include("sidebar.php") ?>
 
+  <div class="container-fluid mt-4">
+    <h1 class="h3 mb-0 text-gray-800 text-success font-weight-light">Procura</h1>
+    <p class="mb-4 pt-2 text-secondary">A tabela de dados socioeconômicos dos alunos a faz de mostra informações sobre status social, bolsas, acesso a recursos e situação familiar, auxiliando na compreensão do perfil dos alunos e na promoção da igualdade educacional. Tratamento confidencial dos dados é essencial.</p>
+    <div class="card border-0 border-start border-4 border-success  rounded-0 mb-4">
+      <div class="card-header border-0 bg-white">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-success">Dados dos Alunos</h6>
+          <form class="d-flex" role="search">
+            <input class="form-control shadow-sm me-2" type="search" placeholder="Procurar" aria-label="Search" name="search" id="search">
+          </form>
+        </div>
+      </div>
+      <div class="card-body bg-white">
+        <div class="table-responsive">
+          <div id="resultado"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        $('#search').keyup(function(){
+          $('form').submit(function(){
+            var dados = $(this).serialize();
+            $.ajax({
+              url: 'search.php',
+              type: 'POST',
+              dataType: 'html',
+              data: dados,
+              success: function(data) {
+                $('#resultado').empty().html(data);
+              }
+            })
+            return false;
+          })
+          $('form').trigger('submit');
+        })
+      })
+    </script>
   </body>
 </html>
