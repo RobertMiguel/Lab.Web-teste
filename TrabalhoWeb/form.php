@@ -45,7 +45,7 @@
           </div>
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="curso" id="curso" required>
-              <option value="CURSO" selected>CURSO</option>
+              <option value="CURSO" selected>Curso</option>
               <option value="ENFERMAGEM">ENFERMAGEM</option>
               <option value="INFORMÁTICA">INFORMÁTICA</option>
               <option value="ADMINISTRACÃO">ADMINISTRACÃO</option>
@@ -64,7 +64,7 @@
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="sexo" id="sexo" required>
-              <option selected>SEXO</option>
+              <option selected>Sexo</option>
               <option value="MASCULINO">MASCULINO</option>
               <option value="FEMININO">FEMININO</option>
               <option value="OUTRO">OUTROS</option>
@@ -72,7 +72,7 @@
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="raca" id="raca" required>
-              <option selected>RAÇA</option>
+              <option selected>Raça</option>
               <option value="BRANCO">BRANCO</option>
               <option value="NEGRO">NEGRO</option>
               <option value="PARDO">PARDO</option>
@@ -184,7 +184,7 @@
           </div>
           <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
             <input type="text" name="rec" placeholder="Recursos necessários para participação em avaliações externas" class="form-control shadow-none" id="rec" oninput="handleInput(event)">
-            <label class="text-secondary" for="rec">Recursos necessários</label>
+            <label class="text-secondary" for="rec">Recursos Necessários</label>
           </div>
         </div>
         </div>
@@ -421,6 +421,12 @@
             <label class="text-secondary" for="qi">Quant. Irmãos</label>
           </div>
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+           <input type="text" name="qp" placeholder="Quant. pessoas que residem" class="form-control shadow-none" id="qp" required>
+           <label class="text-secondary" for="qp">Num. Membros</label>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="rms" id="rms">
               <option selected>Renda Mensal</option>
               <option value="MENOS DE 1 SALÁRIO MÍNIMO">MENOS DE 1 SALÁRIO MÍNIMO</option>
@@ -429,6 +435,64 @@
               <option value="DE 4 A 5 SALÁRIOS MÍNIMOS">DE 4 A 5 SALÁRIOS MÍNIMOS</option>
               <option value="MAIOR QUE 5 SALÁRIOS MÍNIMOS">MAIOR QUE 5 SALÁRIOS MÍNIMOS</option>
             </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="am" id="am">
+              <option selected>Composição Familiar</option>
+              <option value="PAI">PAI</option>
+              <option value="MÃE">MÃE</option>
+              <option value="AMBOS">AMBOS</option>
+              <option value="OUTROS">OUTROS</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="tc" id="tc">
+              <option selected>Computador ao Acesso a Internet</option>
+              <option value="SIM">SIM</option>
+              <option value="NÃO">NÃO</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="bg" id="bg">
+              <option selected>Benefício Governo</option>
+              <option value="SIM">SIM</option>
+              <option value="NÃO">NÃO</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="te" id="te">
+              <option selected>Transporte Escolar</option>
+              <option value="A PÉ">A PÉ</option>
+              <option value="BICICLETA">BICICLETA</option>
+              <option value="TRANSPORTE COLETIVO">TRANSPORTE COLETIVO</option>
+              <option value="TRANSPORTE PRÓPRIO">TRANSPORTE PRÓPRIO</option>
+              <option value="TRANSPORTE ESCOLAR">TRANSPORTE ESCOLAR</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="cef" id="cef">
+              <option selected>Concluiu o Ensino Fundamental</option>
+              <option value="ESCOLA PÚBLICA">ESCOLA PÚBLICA</option>
+              <option value="ESCOLAR PARTICULAR">ESCOLAR PARTICULAR</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+            <select class="form-select" aria-label="Default select example" name="pqeep" id="pqeep">
+            <option selected></option>
+              <option value="É PERTO DA ESCOLA">É PERTO DA ESCOLA</option>
+              <option value="PELA JORNADA INTEGRAL">PELA JORNADA INTEGRAL</option>
+              <option value="PELO CURSO TÉCNICO">PELO CURSO TÉCNICO</option>
+              <option value="PELA QUALIDADE DE ENSINO">PELA QUALIDADE DE ENSINO</option>
+              <option value="PARA SE PREPARAR PARA VESTIBULARES">PARA SE PREPARAR PARA VESTIBULARES</option>
+              <option value="PARA SE PREPARAR PARA JORNADA DE TRABALHO">PARA SE PREPARAR PARA JORNADA DE TRABALHO</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
+
           </div>
         </div>
       </div>
