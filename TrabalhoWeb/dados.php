@@ -375,7 +375,7 @@ include('protect.php');
                         <option value="ENSINO MÉDIO INCOMPLETO">ENSINO MÉDIO INCOMPLETO</option>
                         <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
                         <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
-                    </select>
+                </select>
                 </div>
                 <div class="col-sm-3">
                     <label for="">Está empregado(a):</label>
