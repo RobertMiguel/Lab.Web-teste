@@ -2,7 +2,6 @@
  include("conexao.php");
  include("protect.php");
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,9 +18,7 @@
   <link rel="stylesheet" href="styles/table.css">
   </head>
   <body>
-
   <?php include("sidebar.php") ?>
-
   <div class="container-fluid mt-4">
     <h1 class="h3 mb-0 text-gray-800 text-success font-weight-light">Procura</h1>
     <p class="mb-4 pt-2 text-secondary">A tabela de dados socioeconômicos dos alunos a faz de mostra informações sobre status social, bolsas, acesso a recursos e situação familiar, auxiliando na compreensão do perfil dos alunos e na promoção da igualdade educacional. Tratamento confidencial dos dados é essencial.</p>
@@ -41,29 +38,31 @@
       </div>
     </div>
   </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function() {
-        $('#search').keyup(function(){
-          $('form').submit(function(){
-            var dados = $(this).serialize();
-            $.ajax({
-              url: 'search.php',
-              type: 'POST',
-              dataType: 'html',
-              data: dados,
-              success: function(data) {
-                $('#resultado').empty().html(data);
-              }
-            })
-            return false;
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Ajax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <!-- BootStrap Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search').keyup(function(){
+        $('form').submit(function(){
+          var dados = $(this).serialize();
+          $.ajax({
+            url: 'search.php',
+            type: 'POST',
+            dataType: 'html',
+            data: dados,
+            success: function(data) {
+              $('#resultado').empty().html(data);
+            }
           })
-          $('form').trigger('submit');
+          return false;
         })
+        $('form').trigger('submit');
       })
-    </script>
+    })
+  </script>
   </body>
 </html>
