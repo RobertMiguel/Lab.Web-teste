@@ -37,11 +37,11 @@
           </div>
           <div class="row mb-3">
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
-            <input type="text" class="form-control shadow-none" name="cpfAluno" id="cpfAluno" placeholder="000.000.000-00" maxlength="11" required>
+            <input type="text" name="cpfAluno" class="form-control shadow-none" id="cpfAluno" placeholder="000.000.000-00" maxlength="11" required>
             <label class="text-secondary" for="cpfAluno">CPF do Aluno</label>
           </div>
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
-            <input type="date" class="form-control text-secondary shadow-none" name="dataNascimento" id="dataNascimento" required>
+            <input type="date" name="dataNascimento" class="form-control text-secondary shadow-none"  id="dataNascimento" required>
           </div>
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
             <select class="form-select text-secondary" name="curso" id="curso" required>
@@ -517,16 +517,34 @@
             </select>
           </div>
         </div>
-      </div>
-    </div>
-
+        <h3 class="h4 mb-0 text-gray-800 text-warning font-weight-light pb-3">Dados referente conclusão do formulário</h3>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <input type="text" name="rpa" placeholder="Responsável do aluno" class="form-control shadow-none" id="rpa" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="rpa">Responsável do aluno</label>
+          </div>
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <input type="text" name="rpm" placeholder="Responsável pela matrícula" class="form-control shadow-none" id="rpm" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="rpm">Responsável pela matrícula</label>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <input type="text" name="ns" placeholder="Nome do secretário(a)" class="form-control shadow-none" id="ns" oninput="handleInput(event)" required>
+            <label class="text-secondary" for="ns">Nome do secretário(a)</label>
+          </div>
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <input type="date" name="data" class="form-control text-secondary shadow-none" id="data" required>
+          </div>
+        </div>
   </form>
-
-
   <!-- Script da Máscara -->
    <script src="./script/mask.js"></script>
+   <!-- Jquery -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <!-- Ajax -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+   <!-- Bootstrap Script -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </script>
   </body>
