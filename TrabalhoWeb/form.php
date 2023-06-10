@@ -55,11 +55,10 @@
         </div>
       </div>
     </div>
-
     <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
-            <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Dados Adicionais</h2>
+          <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light pb-3">Dados Adicionais</h2>
         </div>
         <div class="row mb-3">
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
@@ -144,7 +143,6 @@
         </div>
       </div>
     </div>
-
     <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
@@ -189,7 +187,6 @@
         </div>
         </div>
     </div>
-
     <!-- <div class="container mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
@@ -313,7 +310,6 @@
 
       </div>
     </div>   -->
-
     <div class="container border-start border-4 border-warning mt-4 px-md-0">
       <div class="order-form-container">
         <div class="form-header">
@@ -480,9 +476,9 @@
           </div>
         </div>
         <div class="row mb-3">
-          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
-            <select class="form-select" aria-label="Default select example" name="pqeep" id="pqeep">
-            <option selected></option>
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="pqeep" id="pqeep">
+            <option selected>Optou pela EEEP Manoel Mano</option>
               <option value="É PERTO DA ESCOLA">É PERTO DA ESCOLA</option>
               <option value="PELA JORNADA INTEGRAL">PELA JORNADA INTEGRAL</option>
               <option value="PELO CURSO TÉCNICO">PELO CURSO TÉCNICO</option>
@@ -491,8 +487,34 @@
               <option value="PARA SE PREPARAR PARA JORNADA DE TRABALHO">PARA SE PREPARAR PARA JORNADA DE TRABALHO</option>
             </select>
           </div>
-          <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
-
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="ssc" id="ssc">
+              <option selected>O que você sabe sobre o curso profissional</option>
+              <option value="NADA SEI">NADA SEI</option>
+              <option value="POUCO SEI">POUCO SEI</option>
+              <option value="TENHO NOÇÕES BÁSICAS">TENHO NOÇÕES BÁSICAS</option>
+              <option value="CONHEÇO O CURSO">CONHEÇO O CURSO</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="pqc" id="pqc">
+              <option selected>Justifique a escolha do curso profissional</option>
+              <option value="AFINIDADE DO ALUNO COM O CURSO">AFINIDADE DO ALUNO COM O CURSO</option>
+              <option value="SUGESTÃO DA FAMÍLIA">SUGESTÃO DA FAMÍLIA</option>
+              <option value="POR SER UM CURSO CONCEITUADO NO MERCADO DE TRABALHO">POR SER UM CURSO CONCEITUADO NO MERCADO DE TRABALHO</option>
+              <option value="NÃO TINHA OUTRA OPÇÃO">NÃO TINHA OUTRA OPÇÃO</option>
+            </select>
+          </div>
+          <div class="form-floating col-12 col-sm-6 mb-3 mb-sm-0">
+            <select class="form-select text-secondary" name="oic" id="oic">
+              <option selected>Onde você obteve informações sobre o curso profissional</option>
+              <option value="RÁDIO, TV, LIVROS, INTERNET">RÁDIO, TV, LIVROS, INTERNET ...</option>
+              <option value="PROFISSIONAIS QUE ATUAM NA ÁREA">PROFISSIONAIS QUE ATUAM NA ÁREA</option>
+              <option value="NA PRÓPRIA ESCOLA">NA PRÓPRIA ESCOLA</option>
+              <option value="NÃO TIVE INFORMAÇÕES">NÃO TIVE INFORMAÇÕES</option>
+            </select>
           </div>
         </div>
       </div>
