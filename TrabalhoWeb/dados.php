@@ -581,8 +581,6 @@ include('protect.php');
                                 <label> Tem alergia(s)?</label>
                             </td>
                             <td>
-
-                
                                 <select class="form-select" name="alergiasN" id="alergiasI" onchange="verifica(this.value)">
                                 <option>Selecione</option>
                                 <option value="SIM">SIM</option>
