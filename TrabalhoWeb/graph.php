@@ -165,6 +165,124 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     });
 </script>
 <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawStudentResideChart);
+    function drawStudentResideChart() {
+        var container = document.getElementById('student-resides');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Reside com o Aluno', 'Quantidade de pessoas' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoMora; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['alunoMora'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            title: 'Quantidade por cada aluno',
+            subtitle: 'Quantidade de pessoas que residem com o aluno',
+            width: chartWidth,
+            height: chartHeight,
+            colors: ['#ffa500', '#00bd19', '#808080'],
+        };
+        var chart = new google.visualization.PieChart(container);
+        chart.draw(data, options);
+    }
+    window.addEventListener('resize', function() {
+        drawStudentResideChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawMonthIncomeChart);
+    function drawMonthIncomeChart() {
+        var container = document.getElementById('monthly-income');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Rensa Mensal', 'Quantidade de famílias' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY rendaMensalFamiliar; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['rendaMensalFamiliar'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            title: 'Renda mensal por cada casa',
+            subtitle: 'Renda mensal de cada família do aluno',
+            width: chartWidth,
+            height: chartHeight,
+            colors: ['#ffa500', '#00bd19', '#808080'],
+            pieHole: 0.4,
+        };
+        var chart = new google.visualization.PieChart(container);
+        chart.draw(data, options);
+    }
+    window.addEventListener('resize', function() {
+        drawMonthIncomeChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawTypeOfHousingChart);
+    function drawTypeOfHousingChart() {
+        var container = document.getElementById('type-of-housing');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Reside com o Aluno', 'Quantidade de pessoas' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY moradia; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['moradia'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            title: 'Quantidade por cada aluno',
+            subtitle: 'Quantidade de pessoas que residem com o aluno',
+            width: chartWidth,
+            height: chartHeight,
+            colors: ['#00bd19', '#808080'],
+        };
+        var chart = new google.visualization.PieChart(container);
+        chart.draw(data, options);
+    }
+    window.addEventListener('resize', function() {
+        drawTypeOfHousingChart();
+    });
+</script>
+<script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawEmployedMothersChart);
     function drawEmployedMothersChart() {
@@ -441,7 +559,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
+                        <div id="student-resides" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
@@ -454,7 +572,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                        <div id="type-of-housing" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
@@ -467,7 +585,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                        <div id="monthly-income" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>

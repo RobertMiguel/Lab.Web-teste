@@ -251,26 +251,17 @@
             ['Reside com o Aluno', 'Quantidade de pessoas' ,'Porcentagem'],
             <?php
               include "conexao.php";
-
-              // Verifica erros na conexão com o banco de dados
               if($mysqli->connect_errno) {
                 die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
               }
-
-              // Consulta o total de alunos em cada curso
               $sql = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoMora; ";
               $result = mysqli_query($mysqli, $sql);
-
-              // Verifica erros na consulta
               if(!$result) {
                 die("Erro ao executar a consulta: " . $mysqli->error);
               }
-
-              // Monta o array de dados do gráfico
               while($dados = mysqli_fetch_array($result)) {
                 echo "['" . $dados['alunoMora'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
               }
-
               $mysqli->close();
             ?>
         ]);
