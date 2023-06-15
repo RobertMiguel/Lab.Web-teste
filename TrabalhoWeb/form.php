@@ -725,6 +725,11 @@
       </div>
     </div>
   </form>
+
+  <?php
+    include("footer.php");
+  ?>
+
   <!-- Script da Máscara -->
    <script src="./script/mask.js"></script>
    <!-- Jquery -->

@@ -7,7 +7,7 @@ require("conexao.php");
 // Tabela Visão geral dos alunos do 1ª Ano 2023
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM form3)) * 100, 2), '%') AS porcentagem_alunos FROM form3 WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
+$sql_code = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Criar o objeto PDF
@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Mães Empregadas
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregadoMae; ";
+$sql_code = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregadoMae; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -77,7 +77,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Pais Empregados
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY empregado; ";
+$sql_code = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregado; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -99,7 +99,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Escolaridade do Pai
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escolaridadePai; ";
+$sql_code = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escolaridadePai; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -121,7 +121,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Escolaridade da Mãe
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY escola2; ";
+$sql_code = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escola2; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -143,7 +143,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Pessoas que Residem com o Aluno
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoMora; ";
+$sql_code = "SELECT alunoMora, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoMora; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -165,7 +165,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Tipos de Moradia
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY moradia; ";
+$sql_code = "SELECT moradia, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY moradia; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -187,7 +187,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Renda Mensal
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY rendaMensalFamiliar; ";
+$sql_code = "SELECT rendaMensalFamiliar, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY rendaMensalFamiliar; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título
@@ -209,7 +209,7 @@ while ($row = $result->fetch_assoc()) {
 // Tabela Aonde o Aluno Concluiu o Ensino Fundamental
 
 // Consulta SQL para obter os dados
-$sql_code = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM form3 GROUP BY alunoEnsinoFundamental; ";
+$sql_code = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoEnsinoFundamental; ";
 $result = mysqli_query($mysqli, $sql_code);
 
 // Título

@@ -636,6 +636,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             </div>
         </div>
     </div>
+
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
