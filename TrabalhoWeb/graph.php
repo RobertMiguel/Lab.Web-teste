@@ -195,6 +195,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             width: chartWidth,
             height: chartHeight,
             colors: ['#ffa500', '#00bd19', '#808080'],
+            pieHole: 0.4,
         };
         var chart = new google.visualization.PieChart(container);
         chart.draw(data, options);
@@ -233,7 +234,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             subtitle: 'Renda mensal de cada família do aluno',
             width: chartWidth,
             height: chartHeight,
-            colors: ['#ffa500', '#00bd19', '#808080'],
+            colors: ['#808080', '#00bd19', '#0000FF', '#FFA500', '#FF8C00'],
             pieHole: 0.4,
         };
         var chart = new google.visualization.PieChart(container);
@@ -274,6 +275,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             width: chartWidth,
             height: chartHeight,
             colors: ['#00bd19', '#808080'],
+            pieHole: 0.4, // Define o tamanho do furo no gráfico de rosca (de 0 a 1)
         };
         var chart = new google.visualization.PieChart(container);
         chart.draw(data, options);
