@@ -30,10 +30,9 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     <link rel="stylesheet" href="styles/graph.css">
     <!-- Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawOverviewChart);
-
     function drawOverviewChart() {
         var container = document.getElementById('overview');
         var chartWidth = container.offsetWidth;
@@ -158,7 +157,6 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 1: { color: '#00bd19' },
             },
         };
-
         var chart = new google.charts.Bar(container);
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
@@ -168,13 +166,101 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
 </script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawEmployedMothersChart);
+    function drawEmployedMothersChart() {
+        var container = document.getElementById('employed-mothers');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Mães Empregadas', 'Quantidade de Mães', 'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT empregadoMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregadoMae; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['empregadoMae'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            chart: {
+            title: 'Quantidade de Mães Empregadas',
+            subtitle: 'Porcentagem de cada mãe do aluno',
+            },
+            bars: 'horizontal',
+            width: chartWidth,
+            height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            }
+        };
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    window.addEventListener('resize', function() {
+        drawEmployedMothersChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawMothersSchoolingChart);
+    function drawMothersSchoolingChart() {
+        var container = document.getElementById('mothers-schooling');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Escolaridade', 'Quantidade de escolaridade' ,'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escola2; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escola2'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            chart: {
+            title: 'Quantidade por Escolaridade',
+            subtitle: 'Escolaridade de cada mãe, em toda a escola',
+            },
+            bars: 'horizontal',
+            width: chartWidth,
+            height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            },
+        };
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    window.addEventListener('resize', function() {
+        drawMothersSchoolingChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawElementarySchoolChart);
-
     function drawElementarySchoolChart() {
         var container = document.getElementById('elementary-school');
         var chartWidth = container.offsetWidth;
         var chartHeight = 250; 
-
         var data = google.visualization.arrayToDataTable([
             ['Tipos de Escola', 'Quantidade de Alunos' ,'Porcentagem'],
             <?php
@@ -396,7 +482,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
+                        <div id="employed-mothers" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
@@ -409,7 +495,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                        <div id="mothers-schooling" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
