@@ -29,7 +29,7 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
             $_SESSION['usuario'] = $usuario['usuario'];
 
 
-            header("Location: dados.php");
+            header("Location: form.php");
 
         } else {
             echo "Falha ao logar! Usuário ou senha incorretos";
@@ -72,16 +72,6 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
             align-items: center;
             justify-content: center;
         }
-        
-        footer {
-            background-color: #f8f9fa;
-            padding: 10px 0;
-            text-align: center;
-        }
-        
-        footer img {
-            max-height: 80px;
-        }
     </style>
 </head>
 <body>
@@ -101,17 +91,18 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
                             <label for="senha"><span><img src="assets/icon-password.png" alt="Senha"></span> Senha</label> 
                             <input type="password" name="senha" placeholder="Digite a senha" class="form-control">
                             <div class="submit">
-                                <input type="submit" value="Entrar" class="btn btn-primary">
+                                <input type="submit" value="Entrar" class="btn btn-success">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <footer>
-            <img src="./assets/ondas-governo-rodape.png" class="img-fluid">
-        </footer>
     </div>
+
+    <?php 
+        include("footer.php");
+    ?>
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
