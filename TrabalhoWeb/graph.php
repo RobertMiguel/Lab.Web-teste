@@ -32,7 +32,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,45 +47,32 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     <link rel="stylesheet" href="styles/graph.css">
     <!-- Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <!-- Quantidade de Alunos, cada curso -->
     <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawOverviewChart);
 
-    function drawChart() {
+    function drawOverviewChart() {
         var container = document.getElementById('overview');
         var chartWidth = container.offsetWidth;
-        var chartHeight = 250; // Altura desejada do gráfico
-
+        var chartHeight = 250; 
         var data = google.visualization.arrayToDataTable([
             ['Cursos', 'Quantidade de Alunos', 'Porcentagem'],
             <?php
-            include ("conexao.php");
-
-            // Verifica erros na conexão com o banco de dados
-            if($mysqli->connect_errno) {
+              include "conexao.php";
+              if($mysqli->connect_errno) {
                 die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
-            }
-
-            // Consulta o total de alunos em cada curso
-            $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
-            $result = mysqli_query($mysqli, $sql);
-
-            // Verifica erros na consulta
-            if(!$result) {
+              }
+              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
                 die("Erro ao executar a consulta: " . $mysqli->error);
-            }
-
-            // Monta o array de dados do gráfico
-            while($dados = mysqli_fetch_array($result)) {
+              }
+              while($dados = mysqli_fetch_array($result)) {
                 echo "['" . $dados['curso'] . "', " . $dados['total_alunos'] . ", '" . $dados['porcentagem_alunos'] . "'],";
-            }
-
-            $mysqli->close();
+              }
+              $mysqli->close();
             ?>
         ]);
-
         var options = {
             chart: {
                 title: 'Quantidade por Curso',
@@ -98,19 +85,142 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 1: { color: '#00bd19' },
             },
         };
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    window.addEventListener('resize', function() {
+        drawOverviewChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawEmployedParentsChart);
+    function drawEmployedParentsChart() {
+        var container = document.getElementById('employed-parents');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Pais Empregados', 'Quantidade de Pais', 'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT empregado, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY empregado; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['empregado'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            chart: {
+                title: 'Quantidade de Pais Empregadas',
+                subtitle: 'Porcentagem de cada pai do aluno',
+            },
+            width: chartWidth,
+            height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            },
+        };
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    window.addEventListener('resize', function() {
+        drawEmployedParentsChart();
+    });
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawParentsSchoolingChart);
+    function drawParentsSchoolingChart() {
+        var container = document.getElementById('parents-schooling');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Escolaridade', 'Quantidade de Pais', 'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escolaridadePai; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escolaridadePai'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            chart: {
+                title: 'Quantidade por Escolaridade',
+                subtitle: 'Escolaridade de cada pai, em toda a escola',
+            },
+            width: chartWidth,
+            height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            },
+        };
 
         var chart = new google.charts.Bar(container);
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
-
-    // Redimensionar o gráfico quando a janela for redimensionada
     window.addEventListener('resize', function() {
-        drawChart();
+        drawParentsSchoolingChart();
     });
-    </script>
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawParentsSchoolingChart);
+    function drawParentsSchoolingChart() {
+        var container = document.getElementById('parents-schooling');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250;
+        var data = google.visualization.arrayToDataTable([
+            ['Escolaridade', 'Quantidade de Pais'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade FROM Dados GROUP BY escolaridadePai; ";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['escolaridadePai'] . "', " . $dados['quantidade'] . "],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            title: 'Quantidade por Escolaridade',
+            width: chartWidth,
+            height: chartHeight,
+        };
+        var chart = new google.visualization.PieChart(container);
+        chart.draw(data, options);
+    }
+    window.addEventListener('resize', function() {
+        drawParentsSchoolingChart();
+    });
+</script>
 </head>
-<body>
-    
+<body style="overflow: auto;">
+
     <?php include("sidebar.php"); ?>
 
     <div class="container-fluid mt-4 text-center">
@@ -121,7 +231,6 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             </a>
         </div>
         <div class="row">
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card card-border-left shadow h-100 py-2">
                     <div class="card-body">
@@ -141,7 +250,6 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card card-border-left shadow h-100 py-2">
                     <div class="card-body">
@@ -161,7 +269,6 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card card-border-left shadow h-100 py-2">
                     <div class="card-body">
@@ -181,7 +288,6 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card card-border-left shadow h-100 py-2">
                     <div class="card-body">
@@ -201,11 +307,8 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="row">
-
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -220,9 +323,121 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Pais Empregados</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Quantidade de pais empregados e a porcentagem correspondente. Essas informações podem ser utilizadas para visualizar a distribuição dos pais empregados em relação ao total de registros">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Escolariade dos Pais</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Escolaridade dos pais, juntamente com a quantidade de ocorrências e a porcentagem correspondente. Essas informações permitem visualizar a distribuição da escolaridade dos pais em relação ao total de registros">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Aluno Reside</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" da visualizar a distribuição dos pais empregados em relação ao total de registrosta-bs-content="Contagem para cada categoria de quem risde com aluno reside. Em seguida, calcula a porcentagem correspondente de cada categoria em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por local de residência. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Tipo de Moradia</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Diferentes tipos de moradia dos alunos e conta a quantidade de ocorrências para cada tipo. Em seguida, calcula a porcentagem correspondente de cada tipo em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por tipo de moradia. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Renda Mensal</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Renda mensal familiar dos alunos e conta a quantidade de ocorrências para cada faixa de renda. Em seguida, calcula a porcentagem correspondente de cada faixa em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por faixa de renda mensal familiar. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Mães Empregados</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Quantidade das mães empregados e a porcentagem correspondente. Essas informações podem ser utilizadas para visualizar a distribuição dos pais empregados em relação ao total de registros">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="employed-parents" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Escolariade das Mães</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Escolaridade das mães, juntamente com a quantidade de ocorrências e a porcentagem correspondente. Essas informações permitem visualizar a distribuição da escolaridade dos pais em relação ao total de registros">
+                            <i class="bi bi-info-square-fill text-success"></i>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+             <div class="card shadow mb-4 mx-auto ">
+                          </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="overview" style="height: 250px; width: 100%;"></div>
+                    </div>
+                     <h6 class="m-0 font-weight-bold text-success">Aluno Concluiu o Ensino Fundamental</h6>
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Categoria de ensino fundamental do aluno. Em seguida, calcula a porcentagem correspondente de cada categoria em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por nível de ensino fundamental. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
+                            <i class="bi bi-info-square-fill text-success"></i>
+        !-- Popovers -->
+    <scri           </div>
+            </div>
+            <div class="col">
+           </div>
 
-    <!-- Popovers -->
-    <script>
+    <          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        pt>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)
