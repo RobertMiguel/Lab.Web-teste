@@ -1,36 +1,19 @@
 <?php
 include("protect.php");
-
 include("conexao.php");
-
-// Total de Nomes
-
 $total_nomes = "SELECT COUNT(nome) AS total_nomes FROM Dados;";
 $sql_query = $mysqli->query($total_nomes);
-
 $resultado = $sql_query->fetch_assoc();
-
 $total_nomes = $resultado['total_nomes'];
-
-// Total de Familias
-
 $total_familias = "SELECT COUNT(DISTINCT CONCAT(nome, nomePai, nomeMae, moradia)) AS total_familias FROM Dados;";
 $sql_query = $mysqli->query($total_familias);
-
 $resultado = $sql_query->fetch_assoc();
-
 $total_familias = $resultado['total_familias'];
-
-// Resultado
-
 $total_campos = 0;
-
 if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     $total_campos = $sql_query->num_rows;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -122,12 +105,13 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 title: 'Quantidade de Pais Empregadas',
                 subtitle: 'Porcentagem de cada pai do aluno',
             },
+            bars: 'horizontal',
             width: chartWidth,
             height: chartHeight,
             series: {
                 0: { color: '#808080' },
                 1: { color: '#00bd19' },
-            },
+            }
         };
         var chart = new google.charts.Bar(container);
         chart.draw(data, google.charts.Bar.convertOptions(options));
@@ -166,6 +150,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 title: 'Quantidade por Escolaridade',
                 subtitle: 'Escolaridade de cada pai, em toda a escola',
             },
+            bars: 'horizontal',
             width: chartWidth,
             height: chartHeight,
             series: {
@@ -182,40 +167,49 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     });
 </script>
 <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawParentsSchoolingChart);
-    function drawParentsSchoolingChart() {
-        var container = document.getElementById('parents-schooling');
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawElementarySchoolChart);
+
+    function drawElementarySchoolChart() {
+        var container = document.getElementById('elementary-school');
         var chartWidth = container.offsetWidth;
-        var chartHeight = 250;
+        var chartHeight = 250; 
+
         var data = google.visualization.arrayToDataTable([
-            ['Escolaridade', 'Quantidade de Pais'],
+            ['Tipos de Escola', 'Quantidade de Alunos' ,'Porcentagem'],
             <?php
               include "conexao.php";
-              if($mysqli->connect_errno) {
+              if($mysqli->connect_error) {
                 die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
               }
-              $sql = "SELECT escolaridadePai, COUNT(*) AS quantidade FROM Dados GROUP BY escolaridadePai; ";
+              $sql = "SELECT alunoEnsinoFundamental, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY alunoEnsinoFundamental; ";
               $result = mysqli_query($mysqli, $sql);
               if(!$result) {
                 die("Erro ao executar a consulta: " . $mysqli->error);
               }
               while($dados = mysqli_fetch_array($result)) {
-                echo "['" . $dados['escolaridadePai'] . "', " . $dados['quantidade'] . "],";
+                echo "['" . $dados['alunoEnsinoFundamental'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
               }
               $mysqli->close();
             ?>
         ]);
         var options = {
-            title: 'Quantidade por Escolaridade',
+            chart: {
+            title: 'Quantidade por cada aluno',
+            subtitle: 'Termino do ensino fundamental',
+            },
             width: chartWidth,
             height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            },
         };
-        var chart = new google.visualization.PieChart(container);
-        chart.draw(data, options);
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
     }
     window.addEventListener('resize', function() {
-        drawParentsSchoolingChart();
+        drawElementarySchoolChart();
     });
 </script>
 </head>
@@ -356,7 +350,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-success">Aluno Reside</h6>
-                        <button type="button" class="btn" data-bs-toggle="popover" da visualizar a distribuição dos pais empregados em relação ao total de registrosta-bs-content="Contagem para cada categoria de quem risde com aluno reside. Em seguida, calcula a porcentagem correspondente de cada categoria em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por local de residência. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
+                        <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Contagem para cada categoria de quem risde com aluno reside. Em seguida, calcula a porcentagem correspondente de cada categoria em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por local de residência. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
                             <i class="bi bi-info-square-fill text-success"></i>
                         </button>
                     </div>
@@ -430,7 +424,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                         </button>
                     </div>
                     <div class="card-body align-items-start">
-                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                        <div id="elementary-school" style="height: 250px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
