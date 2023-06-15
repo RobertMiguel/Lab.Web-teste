@@ -197,38 +197,7 @@ include('protect.php');
             <h1 id="cnt">Detalhamento da Matrícula</h1></div>
             <br>
             <br><br><br><br>
-            <div class="row mb-1">
-            <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ano Letivo</th>
-      <th scope="col">Série/Turma</th>
-      <th scope="col">Data de Matrícula</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><input type="year" name="anolet1" class="form-control form-control-sm" id="anolet1" maxlength="4"></td>
-                <td><input type="text" name="turma1" class="form-control form-control-sm" id="turma1" maxlength="1"></td>
-                <td><input type="date" name="datamt1" class="form-control form-control-sm" id="datamt1"></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td><input type="year" name="anolet2" class="form-control form-control-sm" id="anolet2" maxlength="4"></td>
-                <td><input type="text" name="turma2" class="form-control form-control-sm" id="turma2" maxlength="1"></td>
-                <td><input type="date" name="datamt2" class="form-control form-control-sm" id="datamt2"></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td><input type="year" name="anolet3" class="form-control form-control-sm" id="anolet3" maxlength="4"></td>
-                <td><input type="text" name="turma3" class="form-control form-control-sm" id="turma3" maxlength="1"></td>
-                <td><input type="date" name="datamt3" class="form-control form-control-sm" id="datamt3"></td>
-    </tr>
-  </tbody>
-</table>
-            </div>
+
             <br><br><br>
             <p id="cnt2"></p>
             <div class="row"><p id="cnt2"></p>
@@ -553,39 +522,37 @@ include('protect.php');
                             <th scope="row">1</th>
                             <td style="width:500px"> <label> É dependente em plano de saúde?</label> </td>
                             <td style="width: 150px;"> </i> <select class="form-select" name="dependentePSN" id="dependentePSI">
-                            <option>Selecione</option>
-                                    <option value="SIM">SIM</option>
-                                    <option value="NAO">NAO</option>
-                                </select> </td>
+                                <option>Selecione</option>
+                                <option value="SIM">SIM</option>
+                                <option value="NAO">NAO</option>
+                                </select>
+                            </td>
                             <td></td>
                             <td></td>
                         </tr>
-
                         <tr>
                             <th scope="row">2</th>
-                            <td> <label> Tem algum problema de saúde crônico?</label> </td>
-                            <td> <select class="form-select" name="problemaSCN" id="problemaSCI">
-                            <option>Selecione</option>
+                            <td><label> Tem algum problema de saúde crônico?</label></td>
+                            <td>
+                                <select class="form-select" name="problemaSCN" id="problemaSCI">
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
-                                </select> </td>
-                            <td> </td>
-                            <td> </td>
-
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
                         </tr>
-
                         <tr>
                             <th scope="row">3</th>
-
                             <td>
                                 <label> Tem alergia(s)?</label>
                             </td>
                             <td>
                                 <select class="form-select" name="alergiasN" id="alergiasI" onchange="verifica(this.value)">
-                                <option>Selecione</option>
-                                <option value="SIM">SIM</option>
+                                    <option>Selecione</option>
+                                    <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option> 
-                                   
                                 </select>
                             </td>
                             <td style="text-align: center;">
@@ -594,18 +561,17 @@ include('protect.php');
                             <td>
                                 <input type="text" placeholder="Digite aqui" id="alergiasInpI" class="form-control form-control-sm" name="alergiasInpN" oninput="handleInput(event)" >
                             </td>
-
                         </tr>
-
                         <tr>
                             <th scope="row">4</th>
-                            <td> <label> Possui alguma restrição alimentar?</label> </td>
-
-                            <td> <select class="form-select" name="restricaoAlN" id="restricaoAlI"  onchange="verifica1(this.value)">
-                            <option>Selecione</option>
+                            <td><label> Possui alguma restrição alimentar?</label></td>
+                            <td> 
+                                <select class="form-select" name="restricaoAlN" id="restricaoAlI"  onchange="verifica1(this.value)">
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
-                                </select> </td>
+                                </select>
+                            </td>
                             <td style="text-align: center;">
                                 <label> Se sim, qual(is)?</label>
                             </td>
@@ -613,16 +579,14 @@ include('protect.php');
                                 <input type="text" placeholder="Digite aqui" id="restAlInpI" class="form-control form-control-sm" name="restAlInpN" oninput="handleInput(event)" >
                             </td>
                         </tr>
-
-
                         <tr>
                             <th scope="row">5</th>
-                            <td>
-                                <label> Já recebeu diagnóstico médico de deficiência?</label>
-                            </td>
+                                <td>
+                                    <label> Já recebeu diagnóstico médico de deficiência?</label>
+                                </td>
                             <td>
                                 <select class="form-select" name="deficienciaN" id="deficienciaI">
-                                <option>Selecione</option>
+                                     <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>
@@ -630,8 +594,6 @@ include('protect.php');
                             <td></td>
                             <td></td>
                         </tr>
-
-
                         <tr>
                             <th scope="row">6</th>
                             <td>
@@ -647,7 +609,6 @@ include('protect.php');
                             <td></td>
                             <td></td>
                         </tr>
-
                         <tr>
                             <th scope="row">7</th>
                             <td>
@@ -667,13 +628,12 @@ include('protect.php');
                                 <input type="text" id="tratamentoMInI" placeholder="Digite aqui" class="form-control form-control-sm" name="tratamentoMInN" oninput="handleInput(event)" >
                             </td>
                         </tr>
-
                         <tr>
                             <th scope="row">8</th>
                             <td> <label> Está em uso de alguma medicação? </label> </td>
                             <td>
                                 <select class="form-select" name="medicacaoN" id="medicacaoI" onchange="verifica3(this.value)">
-                                <option>Selecione</option>
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>
@@ -685,7 +645,6 @@ include('protect.php');
                                 <input type="text" id="medicacaoInpI" placeholder="Digite aqui" class="form-control form-control-sm" name="medicacaoInpN" oninput="handleInput(event)" >
                             </td>
                         </tr>
-
                         <tr>
                             <th scope="row">9</th>
                             <td>
@@ -693,7 +652,7 @@ include('protect.php');
                             </td>
                             <td>
                                 <select class="form-select" name="vacinaN" id="vacinaI">
-                                <option>Selecione</option>
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>
@@ -701,7 +660,6 @@ include('protect.php');
                             <td></td>
                             <td></td>
                         </tr>
-
                         <tr>
                             <th scope="row">10</th>
                             <td>
@@ -709,7 +667,7 @@ include('protect.php');
                             </td>
                             <td>
                                 <select class="form-select" name="acompanhadoN" id="acompanhadoI">
-                                <option>Selecione</option>
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>
@@ -725,7 +683,7 @@ include('protect.php');
                             </td>
                             <td>
                                 <select class="form-select" name="emergencia" id="emergencia">
-                                <option>Selecione</option>
+                                    <option>Selecione</option>
                                     <option value="PAI">PAI</option>
                                     <option value="MAE">MÃE</option>
                                 </select>
@@ -741,7 +699,7 @@ include('protect.php');
                             </td>
                             <td>
                                 <select class="form-select" name="informacaoN" id="informacaoI" onchange="verifica4(this.value)">
-                                <option>Selecione</option>
+                                    <option>Selecione</option>
                                     <option value="SIM">SIM</option>
                                     <option value="NAO">NAO</option>
                                 </select>
@@ -765,8 +723,6 @@ include('protect.php');
                 <br>
                 </form>
         </section>
-        <!--  <button type="button" class="btn btn-outline-success" id="btn-topo" title="Voltar ao topo"><i class="fas fa-arrow-up"></i>
-    <a href='#t'>voltar</a></button> -->
     </div>
     <br><br>
     <footer>
