@@ -421,29 +421,27 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
             </div>
         </div>
         <div class="row">
-             <div class="card shadow mb-4 mx-auto ">
-                          </button>
-                    </div>
-                    <div class="card-body align-items-start">
-                        <div id="overview" style="height: 250px; width: 100%;"></div>
-                    </div>
-                     <h6 class="m-0 font-weight-bold text-success">Aluno Concluiu o Ensino Fundamental</h6>
+            <div class="col">
+                <div class="card shadow mb-4 mx-auto ">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Aluno Concluiu o Ensino Fundamental</h6>
                         <button type="button" class="btn" data-bs-toggle="popover" data-bs-content="Categoria de ensino fundamental do aluno. Em seguida, calcula a porcentagem correspondente de cada categoria em relação ao total de registros na tabela. O resultado é uma contagem e porcentagem de alunos agrupados por nível de ensino fundamental. Isso permite visualizar a distribuição dos alunos por escola na amostra de dados">
                             <i class="bi bi-info-square-fill text-success"></i>
-        !-- Popovers -->
-    <scri           </div>
+                        </button>
+                    </div>
+                    <div class="card-body align-items-start">
+                        <div id="parents-schooling" style="height: 250px; width: 100%;"></div>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-           </div>
-
-    <          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        pt>
+        </div>
+    </div>
+    <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)
-        })
+    })
     </script>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
