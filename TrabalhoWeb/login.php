@@ -50,7 +50,39 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
     <link rel="icon" type="image/png" sizes="32x32" href="assets/iconmm.png">
     <!-- Estilização de Login -->
     <link rel="stylesheet" href="styles/login.css">
-    <!-- Favicon da página -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .area-formulario {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        footer img {
+            max-height: 80px;
+        }
+    </style>
 </head>
 <body>
 
@@ -59,23 +91,32 @@ if(isset($_POST['usuario']) || isset($_POST['senha'])) {
     ?>
 
     <div class="container"> 
-        <div class="area-formulario">
-            <div class="formulario">
-                <form action=""method="POST">
-                    <label for="usuario"><span><img src="assets/icon-email.png" alt="Usuario"></span> Usuário</label>
-                    <input type="text" id="nu" name="usuario" placeholder="Digite o nome de usuário"> 
-                    <label for="senha"><span><img src="assets/icon-password.png" alt="Senha"></span> Senha</label> 
-                    <input type="password" name="senha" placeholder="Digite a senha">
-                    <div class="submit">
-                        <input type="submit" value="Entrar">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="area-formulario">
+                    <div class="formulario">
+                        <form action="" method="POST">
+                            <label for="usuario"><span><img src="assets/icon-email.png" alt="Usuario"></span> Usuário</label>
+                            <input type="text" id="nu" name="usuario" placeholder="Digite o nome de usuário" class="form-control"> 
+                            <label for="senha"><span><img src="assets/icon-password.png" alt="Senha"></span> Senha</label> 
+                            <input type="password" name="senha" placeholder="Digite a senha" class="form-control">
+                            <div class="submit">
+                                <input type="submit" value="Entrar" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-<!--  </div> -->
         <footer>
-        <img src="./assets/ondas-governo-rodape.png">
+            <img src="./assets/ondas-governo-rodape.png" class="img-fluid">
         </footer>
-    </body>
-    </html>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
 
