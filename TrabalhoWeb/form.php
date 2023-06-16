@@ -31,13 +31,13 @@
         </div>
           <div class="row mb-3">
             <div class="form-floating">
-              <input type="text" class="form-control shadow-none" name="nomeAluno" id="none" placeholder="Nome do aluno" required>
+              <input type="text" class="form-control shadow-none" name="nomeAluno" id="none" placeholder="Nome do aluno" oninput="handleInput(event)" required>
               <label class="text-secondary" for="nomeAluno">Nome do aluno</label>
             </div>
           </div>
           <div class="row mb-3">
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
-            <input type="text" name="cpfAluno" class="form-control shadow-none" id="cpfAluno" placeholder="000.000.000-00" maxlength="11" required>
+            <input type="text" name="cpfAluno" class="form-control shadow-none" id="cpfAluno" placeholder="CPF do Aluno" maxlength="11" oninput="mascaraCPFAluno('cpfAluno')" required>
             <label class="text-secondary" for="cpfAluno">CPF do Aluno</label>
           </div>
           <div class="form-floating col-12 col-sm-4 mb-3 mb-sm-0">
@@ -93,11 +93,11 @@
             <label class="text-secondary" for="loc">Localiz.</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="cel" placeholder="Telefone" class="form-control shadow-none" id="cel" maxlength="11" oninput="mascarra('cel')" required>
+            <input type="text" name="cel" placeholder="Telefone" class="form-control shadow-none" id="cel" maxlength="11" oninput="mascaraTelefone('cel')" required>
             <label class="text-secondary" for="cel">Telefone</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
-            <input type="text" name="telpai" placeholder="Telefone" class="form-control shadow-none" id="telpai" maxlength="11" oninput="mascaraa('TelPai')" required>
+            <input type="text" name="telpai" placeholder="Telefone" class="form-control shadow-none" id="telpai" maxlength="11" oninput="mascaraTelefone('telpai')" required>
             <label class="text-secondary" for="telpai">Celular</label>
           </div>
           <div class="form-floating col-12 col-sm-3 mb-3 mb-sm-0">
@@ -111,11 +111,11 @@
             <label class="text-secondary" for="nomepai">Nome do Pai</label>
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-            <input type="text" name="cpfpai" placeholder="N° do CPF" class="form-control shadow-none" id="cpfpai" maxlength="11" oninput="mascaraCP('CpfPai')" required>
+            <input type="text" name="cpfpai" placeholder="N° do CPF" class="form-control shadow-none" id="cpfpai" maxlength="11" oninput="mascaraCPFAluno('cpfpai')" required>
             <label class="text-secondary" for="cpfpai">CPF</label>
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-            <input type="text" name="telefonePai" placeholder="Celular" class="form-control shadow-none" id="telefonePai" maxlength="11" oninput="mascaraa('TelPai')" required>
+            <input type="text" name="telefonePai" placeholder="Celular" class="form-control shadow-none" id="telefonePai" maxlength="11" oninput="mascaraTelefone('telefonePai')" required>
             <label class="text-secondary" for="telefonePai">Celul.</label>
           </div>
           <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
@@ -129,11 +129,11 @@
               <label class="text-secondary" for="nomemae">Nome do Mãe</label>
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-              <input type="text" name="cpfMae" placeholder="N° do CPF" class="form-control shadow-none" id="cpfMae" maxlength="11" oninput="mascaraCP('CpfPai')" required>
+              <input type="text" name="cpfMae" placeholder="N° do CPF" class="form-control shadow-none" id="cpfMae" maxlength="11" oninput="mascaraCPFAluno('cpfMae')" required>
               <label class="text-secondary" for="cpfMae">CPF</label>
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
-              <input type="text" name="telefoneMae" placeholder="Celular" class="form-control shadow-none" id="telefoneMae" maxlength="11" oninput="mascaraa('TelPai')" required>
+              <input type="text" name="telefoneMae" placeholder="Celular" class="form-control shadow-none" id="telefoneMae" maxlength="11" oninput="mascaraTelefone('telefoneMae')" required>
               <label class="text-secondary" for="telefoneMae">Celul.</label>
             </div>
             <div class="form-floating col-12 col-sm-2 mb-3 mb-sm-0">
@@ -727,7 +727,27 @@
   </form>
 
   <!-- Script da Máscara -->
-   <script src="./script/mask.js"></script>
+   <script src="script/mask.js"></script>
+   <script>
+    function mascaraCPFAluno(mascaraInput) {
+      const cpf = document.getElementById(mascaraInput).maxLength;
+      let valorcpf = document.getElementById(mascaraInput).value;
+      const mascaracpf = valorcpf.replace(/[^\d]/g, "").replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+
+      if (valorcpf.length == cpf) {
+        document.getElementById(mascaraInput).value = mascaracpf;
+      }
+    }
+    function mascaraTelefone(telefoneInput) {
+      const telefone = document.getElementById(telefoneInput).maxLength;
+      let valorTelefone = document.getElementById(telefoneInput).value;
+      const mascaraTelefone = valorTelefone.replace(/[^\d]/g, "").replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+
+      if (valorTelefone.length == telefone) {
+        document.getElementById(telefoneInput).value = mascaraTelefone;
+      }
+    }
+    </script>
    <!-- Jquery -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
    <!-- Ajax -->

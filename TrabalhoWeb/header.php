@@ -23,7 +23,7 @@
         </a>
       </div>
       <div class="d-flex align-items-center justify-content-end">
-        <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light">Formulário Socioeconômico</h2>
+        <h2 class="h3 mb-0 text-gray-800 text-success font-weight-light">EEEP Manoel Mano</h2>
       </div>
     </div>
   </nav>
