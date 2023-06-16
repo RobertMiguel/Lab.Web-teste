@@ -27,7 +27,7 @@
       </div>
     </div>
   </nav>
-  <nav class="navbar navbar-light bg-light nav-border-bottom" style="height: 50px;">
+  <nav class="navbar navbar-light nav-border-bottom" style="height: 50px;">
   </nav>
 </body>
 </html>

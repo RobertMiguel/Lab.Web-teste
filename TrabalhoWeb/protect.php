@@ -69,7 +69,7 @@ if (!isset($_SESSION['id'])) {
     </body>
     </html>';
     
-    die(".<p><a href=\"login.php\">Entrar</a></p>");
+    die("");
 }
 
 ?>
