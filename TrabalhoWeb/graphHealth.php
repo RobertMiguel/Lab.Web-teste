@@ -1,5 +1,7 @@
 <?php
   include("conexaoHealth.php");
+  include("conexao.php");
+  include("protect.php");
   include("listDataHealth.php");
   $total_restricao = "SELECT COUNT(restricaoAlN) AS total_restricao FROM Saude;";
   $sql_query = $connection->query($total_restricao);
@@ -22,6 +24,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap CDN-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Estilização da Página -->
     <link rel="stylesheet" href="styles/graph.css">
     <!-- Charts -->
@@ -112,7 +118,7 @@
     window.addEventListener('resize', function() {
         drawFoodRestrictionChart();
     });
-</script>
+    </script>
 </head>
 <body style="overflow: auto;">
 
@@ -194,15 +200,65 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid mt-4 text-center">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800 text-success font-weight-light">Relatório de Saúde</h1>
+        </div>
+        <div class="input-group" bis_skin_checked="1">
+        <input class="form-control" id="myInput" type="text" placeholder="Pesquisar..."  > <span class="input-group-text" id="basic-addon1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+            </svg>
+        </div>
+        <div class="card-body mt-4">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead  class="thead-dark">
+                    <tr>
+                        <th style="text-align: center; font-size: 20px; color: #00853B;" >Aluno</th>
+                        <th style="text-align: center; font-size: 20px; color: #00853B;">Alergia</th>
+                    <th style="text-align: center; font-size: 20px; color: #00853B;">Rest. Alimentares</th>
+                        <th style="text-align: center; font-size: 20px; color: #00853B;">Curso</th>	      
+                    </tr>
+                </thead> 
+                <?php while ($usuario = mysqli_fetch_assoc($listarSQL)) { ?>
+                <tbody id="myTable">
+                    <tr>
+                        <td style="text-align: center; border-color: inherit;">
+                        <?php echo $usuario['nome']; ?></td>
+                        <td style="text-align: center; border-color: inherit;">
+                            <?php if($usuario['alergiasInpN']!= null){
+                            echo $usuario['alergiasInpN'];
+                            } else if($usuario['alergiasInpN'] = 'NULL'){
+                            echo '-----';
+                            } ?>
+                        </td>
+                        <td style="text-align: center; border-color: inherit;">
+                            <?php if($usuario['restAlInpN']!= null){
+                            echo $usuario['restAlInpN'];
+                            } else if($usuario['restAlInpN'] = 'NULL'){
+                            echo '-----';
+                            }   ?>
+                        </td>
+                        <td style="text-align: center; border-color: inherit;">
+                            <?php echo $usuario['curso']; ?>
+                        </td>
+                    </tr>
+                </tbody>
+                <?php } ?>
+            </table>
+        </div>
+    </div>
+    </div>
     <script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
-        });
-    });
     </script>
     <script>
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))

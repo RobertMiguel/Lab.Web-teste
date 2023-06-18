@@ -30,50 +30,50 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
     <link rel="stylesheet" href="styles/graph.css">
     <!-- Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['bar']});
-        google.charts.setOnLoadCallback(drawOverviewChart);
-        function drawOverviewChart() {
-            var container = document.getElementById('overview');
-            var chartWidth = container.offsetWidth;
-            var chartHeight = 250; 
-            var data = google.visualization.arrayToDataTable([
-                ['Cursos', 'Quantidade de Alunos', 'Porcentagem'],
-                <?php
-                include "conexao.php";
-                if($mysqli->connect_errno) {
-                    die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
-                }
-                $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
-                $result = mysqli_query($mysqli, $sql);
-                if(!$result) {
-                    die("Erro ao executar a consulta: " . $mysqli->error);
-                }
-                while($dados = mysqli_fetch_array($result)) {
-                    echo "['" . $dados['curso'] . "', " . $dados['total_alunos'] . ", '" . $dados['porcentagem_alunos'] . "'],";
-                }
-                $mysqli->close();
-                ?>
-            ]);
-            var options = {
-                chart: {
-                    title: 'Quantidade por Curso',
-                    subtitle: 'Porcentagem de cada curso na escola',
-                },
-                width: chartWidth,
-                height: chartHeight,
-                series: {
-                    0: { color: '#808080' },
-                    1: { color: '#00bd19' },
-                },
-            };
-            var chart = new google.charts.Bar(container);
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
-        window.addEventListener('resize', function() {
-            drawOverviewChart();
-        });
-    </script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawOverviewChart);
+    function drawOverviewChart() {
+        var container = document.getElementById('overview');
+        var chartWidth = container.offsetWidth;
+        var chartHeight = 250; 
+        var data = google.visualization.arrayToDataTable([
+            ['Cursos', 'Quantidade de Alunos', 'Porcentagem'],
+            <?php
+              include "conexao.php";
+              if($mysqli->connect_errno) {
+                die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
+              }
+              $sql = "SELECT curso, COUNT(*) AS total_alunos, CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM Dados)) * 100, 2), '%') AS porcentagem_alunos FROM Dados WHERE curso IN ('comércio', 'administração', 'informática', 'enfermagem') GROUP BY curso";
+              $result = mysqli_query($mysqli, $sql);
+              if(!$result) {
+                die("Erro ao executar a consulta: " . $mysqli->error);
+              }
+              while($dados = mysqli_fetch_array($result)) {
+                echo "['" . $dados['curso'] . "', " . $dados['total_alunos'] . ", '" . $dados['porcentagem_alunos'] . "'],";
+              }
+              $mysqli->close();
+            ?>
+        ]);
+        var options = {
+            chart: {
+                title: 'Quantidade por Curso',
+                subtitle: 'Porcentagem de cada curso na escola',
+            },
+            width: chartWidth,
+            height: chartHeight,
+            series: {
+                0: { color: '#808080' },
+                1: { color: '#00bd19' },
+            },
+        };
+        var chart = new google.charts.Bar(container);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    window.addEventListener('resize', function() {
+        drawOverviewChart();
+    });
+</script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawEmployedParentsChart);
@@ -508,7 +508,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -523,7 +523,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -551,7 +551,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -592,7 +592,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -620,7 +620,7 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div class="col">
                 <div class="card shadow mb-4 mx-auto ">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
