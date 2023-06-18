@@ -127,9 +127,6 @@
     <div class="container-fluid mt-4 text-center">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 text-success font-weight-light">Gráficos</h1>
-            <a href="gerar_pdf.php" class="btn btn-sm">
-                <button type="submit" class="btn btn-outline-success" name="relatorio">Baixar Relatórios</button>
-            </a>
         </div>
         <div class="row justify-content-around">
             <div class="col-xl-3 col-md-6 mb-4">

@@ -343,13 +343,13 @@ if ($sql_query = $mysqli->query("SHOW COLUMNS FROM Dados;")) {
               if($mysqli->connect_errno) {
                 die("Erro ao conectar com o banco de dados: " . $mysqli->connect_error);
               }
-              $sql = "SELECT escola2, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escola2; ";
+              $sql = "SELECT escolaridadeMae, COUNT(*) AS quantidade, CONCAT(FORMAT(COUNT(*) * 100 / SUM(COUNT(*)) OVER(), 2), '%') AS porcentagem FROM Dados GROUP BY escolaridadeMae; ";
               $result = mysqli_query($mysqli, $sql);
               if(!$result) {
                 die("Erro ao executar a consulta: " . $mysqli->error);
               }
               while($dados = mysqli_fetch_array($result)) {
-                echo "['" . $dados['escola2'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
+                echo "['" . $dados['escolaridadeMae'] . "', " . $dados['quantidade'] . ", '" . $dados['porcentagem'] . "'],";
               }
               $mysqli->close();
             ?>
